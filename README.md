@@ -10,13 +10,13 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 
 # Roadmap
 
-[x] Identificar el elemento del examen
-[x] Guardar los titulos y preguntas del examenes
-[x] Categorizar los tipos de respuestas
-[ ] Guardar las respuestas de ordenacion
-[ ] Guardar los datos en un archivo temporal
-[ ] Ir automaticamente al examen
-[ ] Recargar el examen 5 veces para recaudar las 30 preguntas
-[ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
-[ ] Contestar el examen hasta sacar 10
-[ ] Optimizaciones
+- [x] Identificar el elemento del examen
+- [x] Guardar los titulos y preguntas del examenes
+- [x] Categorizar los tipos de respuestas
+- [x] Guardar las respuestas de ordenacion
+- [ ] Guardar los datos en un archivo temporal
+- [ ] Ir automaticamente al examen
+- [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
+- [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
+- [ ] Contestar el examen hasta sacar 10
+- [ ] Optimizaciones
