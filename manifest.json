@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "CPE",
+  "version": "1.0",
+
+  "description": "capacitateparaelempleo.org exam helper",
+
+  "icons": {
+    "48": "icon.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://capacitateparaelempleo.org/*"],
+      "js": ["cpe.js"]
+    }
+  ]
+}
+
