@@ -1,4 +1,4 @@
-document.body.style.border = "10px solid blue";// to detect the use of the extension
+document.body.style.border = "10px solid blue"; // to detect the use of the extension
 
 function main() {
   const appCrearExamen = document.querySelector("app-crear-examen");
@@ -68,13 +68,17 @@ function main() {
     } else {
       //console.log('No <div> with class "title-exam ng-star-inserted" found inside <app-crear-examen>.');
     }
+
+    // Disconnect the observer after the first invocation
+    observer.disconnect();
   } else {
     //console.log("<app-crear-examen> does not exist on this page.");
   }
-} main();
+}
 
 // Use MutationObserver to continuously check for changes in the DOM
 const observer = new MutationObserver(main);
 
 // Configure the observer to watch for changes in the subtree
 observer.observe(document.body, { subtree: true, childList: true });
+
