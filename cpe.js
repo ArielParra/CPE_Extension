@@ -1,80 +1,76 @@
 document.body.style.border = "10px solid blue"; // to detect the use of the extension
 
 function main() {
+  const examData = {
+    title: "",
+    questions: [],
+  };
+
   const appCrearExamen = document.querySelector("app-crear-examen");
 
   if (appCrearExamen) {
-    const titleDiv = appCrearExamen.querySelector(
-      "div.title-exam.ng-star-inserted"
-    );
+    const titleDiv = appCrearExamen.querySelector("div.title-exam.ng-star-inserted");
 
     if (titleDiv) {
-      console.log(
-        'Found <div> with class "title-exam ng-star-inserted":',
-        titleDiv.textContent.trim()
-      );
+      examData.title = titleDiv.textContent.trim(); // title
 
-      const matCards = appCrearExamen.querySelectorAll(
-        //matcard is the class of each of the 10 questions cards
-        "mat-card.mat-card.mat-focus-indicator.question"
-      );
+      const matCards = appCrearExamen.querySelectorAll("mat-card.mat-card.mat-focus-indicator.question");
 
       if (matCards.length > 0) {
         matCards.forEach((matCard, index) => {
-          console.log(`mat-card ${index + 1}`);
-          const labelElements = matCard.querySelectorAll("label");
+          const answers = [];
+          const question = {
+            number: index + 1,
+            title: "",
+            answers: [],
+          };
 
-          const spanElements = matCard.querySelectorAll(
-            ".cdk-drag.example-box.hljs-h1.ng-star-inserted span"
-          );
+          const labelElements = matCard.querySelectorAll("label");
+          const spanElements = matCard.querySelectorAll(".cdk-drag.example-box.hljs-h1.ng-star-inserted span");
 
           if (labelElements.length > 0) {
-            labelElements.forEach((label, index) => {
-              const content = label.textContent.trim();
-              let category = "";
+            labelElements.forEach((label) => {
+              const answer = {
+                type: "",
+                content: "",
+              };
 
               if (label.classList.contains("form-check-label")) {
-                category = "QuestionTitle";
+                question.title = label.textContent.trim();
               }
 
               if (label.classList.contains("mat-radio-label")) {
-                category = "singleAnswer";
+                answer.type = "singleAnswer";
+                answer.content = label.textContent.trim();
               } else if (label.classList.contains("mat-checkbox-layout")) {
-                category = "multiAnswer";
+                answer.type = "multiAnswer";
+                answer.content = label.textContent.trim();
               }
-              console.log(
-                `Label number ${index + 1
-                }, category: ${category}, content: ${content}`
-              );
-            });
-          }
+                if (answer.type !== "" && answer.content !== "") {
+                    question.answers.push(answer);
+                }
+
+                      
+            }); // foreach label
+          } // labels
 
           if (spanElements.length > 0) {
-            spanElements.forEach((span, index) => {
-              const content = span.textContent.trim();
-              let category = "organizeAnswer";
-              console.log(
-                `Span number ${index + 2
-                }, category: ${category}, content: ${content}`
-              );
-            });
-          } else {
-            //console.log("No <span> elements found inside <mat-card>.");
-          }
-        });
-      } else {
-        //console.log("No <mat-card> elements found inside <app-crear-examen>.");
-      }
-    } else {
-      //console.log('No <div> with class "title-exam ng-star-inserted" found inside <app-crear-examen>.');
-    }
+            spanElements.forEach((span) => {
+              const answer = {
+                type: "organizeAnswer",
+                content: span.textContent.trim(),
+              };
+              question.answers.push(answer);
+            }); // foreach span
+          } // span exist
 
-    // Disconnect the observer after the first invocation
-    observer.disconnect();
-  } else {
-    //console.log("<app-crear-examen> does not exist on this page.");
-  }
-}
+          examData.questions.push(question);
+        }); // matcard forEach
+      } // matcards exist
+    } // titlediv exist
+  } // appCrearExamen exist
+  localStorage.setItem("examData", JSON.stringify(examData));
+} // main
 
 // Use MutationObserver to continuously check for changes in the DOM
 const observer = new MutationObserver(main);
