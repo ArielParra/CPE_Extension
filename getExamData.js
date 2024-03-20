@@ -1,10 +1,9 @@
-document.body.style.border = "10px solid blue"; // to detect the use of the extension
-
-function main() {
+function getExamData() {
+  console.log("getExamData function called");
   const examData = {
     title: "",
     questions: [],
-  };
+  };//type for the JSON
 
   const appCrearExamen = document.querySelector("app-crear-examen");
 
@@ -12,7 +11,7 @@ function main() {
     const titleDiv = appCrearExamen.querySelector("div.title-exam.ng-star-inserted");
 
     if (titleDiv) {
-      examData.title = titleDiv.textContent.trim(); // title
+      examData.title = titleDiv.textContent.trim(); // Exam title 
 
       const matCards = appCrearExamen.querySelectorAll("mat-card.mat-card.mat-focus-indicator.question");
 
@@ -20,8 +19,8 @@ function main() {
         matCards.forEach((matCard, index) => {
           const answers = [];
           const question = {
-            number: index + 1,
             title: "",
+            type: "",
             answers: [],
           };
 
@@ -31,7 +30,6 @@ function main() {
           if (labelElements.length > 0) {
             labelElements.forEach((label) => {
               const answer = {
-                type: "",
                 content: "",
               };
 
@@ -40,41 +38,42 @@ function main() {
               }
 
               if (label.classList.contains("mat-radio-label")) {
-                answer.type = "singleAnswer";
+                question.type = "singleAnswer";
                 answer.content = label.textContent.trim();
               } else if (label.classList.contains("mat-checkbox-layout")) {
-                answer.type = "multiAnswer";
+                question.type = "multiAnswer";
                 answer.content = label.textContent.trim();
               }
-                if (answer.type !== "" && answer.content !== "") {
-                    question.answers.push(answer);
-                }
+              if (answer.content !== "") {
+                question.answers.push(answer);
+              }
 
                       
             }); // foreach label
           } // labels
 
+          //organizeAnswer exception
           if (spanElements.length > 0) {
             spanElements.forEach((span) => {
               const answer = {
-                type: "organizeAnswer",
                 content: span.textContent.trim(),
               };
-              question.answers.push(answer);
+            question.type = "organizeAnswer";
+            question.answers.push(answer);
             }); // foreach span
           } // span exist
-
           examData.questions.push(question);
         }); // matcard forEach
       } // matcards exist
     } // titlediv exist
-  } // appCrearExamen exist
-  localStorage.setItem("examData", JSON.stringify(examData));
-} // main
+     if (examData.questions.length > 0){
+        localStorage.setItem("examData", JSON.stringify(examData));
+        alert("examData JSON saved");
+     } else {
+        alert("Error: No questions found");
+    }
+  }else{
+    alert("Error: No exam found");
+ } // appCrearExamen exist
 
-// Use MutationObserver to continuously check for changes in the DOM
-const observer = new MutationObserver(main);
-
-// Configure the observer to watch for changes in the subtree
-observer.observe(document.body, { subtree: true, childList: true });
-
+} 

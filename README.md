@@ -15,8 +15,13 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] Categorizar los tipos de respuestas
 - [x] Guardar las respuestas de ordenacion
 - [x] Guardar los datos en un archivo temporal (JSON)
+- [x] popup de la extension con botones
 - [ ] Ir automaticamente al examen
 - [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
 - [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
 - [ ] Contestar el examen hasta sacar 10
 - [ ] Optimizaciones
+
+# credits
+
+<a href="https://www.flaticon.com/free-icons/survey" title="survey icons">Survey icons created by Freepik - Flaticon</a>

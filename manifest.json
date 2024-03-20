@@ -1,18 +1,20 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "CPE",
   "version": "1.0",
-
   "description": "capacitateparaelempleo.org exam helper",
-
-  "icons": {
-    "48": "icon.png"
+  "action": {
+    "default_icon": "icon.svg",
+    "default_title": "CPE",
+    "default_popup": "popup.html"
   },
-
+  "permissions": [
+    "activeTab"
+  ],
   "content_scripts": [
     {
       "matches": ["*://capacitateparaelempleo.org/*"],
-      "js": ["cpe.js"]
+      "js": ["content.js","getExamData.js"]
     }
   ]
 }
