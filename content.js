@@ -4,7 +4,13 @@ browser.runtime.onMessage.addListener((message) => {
     case "getExamData":
       getExamData();
       break;
+    case "catExamFull":
+      catExamFull();
+      break;
+    case "delExamFull":
+      delExamFull();
+      break;
     }
-
+    
   }//message
 });
