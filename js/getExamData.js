@@ -17,11 +17,12 @@ function getExamData() {
 
       if (matCards.length > 0) {
         matCards.forEach((matCard, index) => {
-          const answers = [];
+          const options = [];
           const question = {
             title: "",
             type: "",
-            answers: [],
+            anwer: [],
+            options: [],
           };
 
           const labelElements = matCard.querySelectorAll("label");
@@ -29,37 +30,33 @@ function getExamData() {
 
           if (labelElements.length > 0) {
             labelElements.forEach((label) => {
-              const answer = {
+              const option = {
                 content: "",
               };
-
               if (label.classList.contains("form-check-label")) {
                 question.title = label.textContent.trim();
               }
-
               if (label.classList.contains("mat-radio-label")) {
-                question.type = "singleAnswer";
-                answer.content = label.textContent.trim();
+                question.type = "singleOption";
+                option.content = label.textContent.trim();
               } else if (label.classList.contains("mat-checkbox-layout")) {
-                question.type = "multiAnswer";
-                answer.content = label.textContent.trim();
+                question.type = "multiOptions";
+                option.content = label.textContent.trim();
               }
-              if (answer.content !== "") {
-                question.answers.push(answer);
+              if (option.content !== "") {
+                question.options.push(option);
               }
-
-                      
             }); // foreach label
           } // labels
 
-          //organizeAnswer exception
+          //organizeoption exception
           if (spanElements.length > 0) {
             spanElements.forEach((span) => {
-              const answer = {
+              const option = {
                 content: span.textContent.trim(),
               };
-            question.type = "organizeAnswer";
-            question.answers.push(answer);
+            question.type = "organizeOptions";
+            question.options.push(option);
             }); // foreach span
           } // span exist
           examData.questions.push(question);

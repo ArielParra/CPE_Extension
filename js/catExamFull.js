@@ -7,7 +7,7 @@ function catExamFull() {
     if (localStorage.getItem("examFull")) {
       const examFull = JSON.parse(localStorage.getItem("examFull"));
       if(examData.title!=examFull.title){ 
-        alert("El exmen no es el mismo, favor de primero borra el examFull.json y vuelve a cargar el examData.json")
+        alert("El examen no es el mismo, favor de primero borra el examFull.json y vuelve a cargar el examData.json")
         return;
       }
       const uniqueQuestions = examData.questions.filter((question) => {
