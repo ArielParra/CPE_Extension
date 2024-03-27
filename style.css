@@ -1,0 +1,96 @@
+:root {
+  /*color pallete*/
+  --yellow:       #ebcb8b;
+  --orange:       #d08770;
+  --red:          #bf616a;
+  --magenta:      #b48ead;
+  --blue:         #5e81ac;
+  --cyan:         #81a1c1;
+  --aqua:         #8fbcbb; 
+  --green:        #a3be8c;
+  --white:        #d8dee9;
+  --black:        #242933;
+  --gray1:        #323a48; 
+
+  --gray2:        #373e4d;
+  --gray3:        #3b4252;
+  --gray4:        #4c566a;
+  --gray5:        #4b5f82;
+
+  /*default theme (dark)*/ 
+
+  --border:       var(--gray2); 
+  --text:         var(--white);  
+
+  --HTML_BG:      var(--black); 
+  --card_BG:      var(--gray3);  
+
+  --hr:           var(--text);
+
+  --button_BG:    var(--gray4);
+  --button_border:var(--card_BG); 
+  --button_color: var(--text);
+
+  --button-hover_border: var(--gray4);
+  --button-hover_BG:     var(--card_BG);
+  --button-hover_color:  var(--text);
+
+  --a-focus: var(--cyan);/*outline when tab is pressed*/
+  --a-href: var(--aqua);
+  --a-href-hover: var(--magenta);
+  
+}  
+html {
+  background-color: var(--HTML_BG);
+  color: var(--text);
+  font-family: sans-serif; 
+  width: 100%; 
+  height: auto; 
+}
+
+body{
+  opacity: 0;
+  transform: translateY(-20px); 
+  animation: fadeInFromBottom 500ms ease forwards;
+}
+
+@keyframes fadeInFromBottom { /* load in animation */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+button{  
+  background-color:           var(--button_BG);
+  border: 2px solid           var(--button_border); 
+  color:                      var(--button_color);
+  box-shadow: 4px 4px 2px 1px var(--gray1);
+  margin: 5px;
+  padding: 15px;
+  margin-top: 0%;
+  border-radius: 35px;
+  transition: background-color 0.3s;
+}
+button:active{
+  transform: scale(1.2);
+  transition: 100ms;
+}
+
+button:hover{
+  border: 2px solid var(--button-hover_border); 
+  background-color: var(--button-hover_BG);
+  color:            var(--button-hover_color);
+  transition: 200ms;
+}
+a[href]{
+  color: #8fbcbb; /* link color */
+  color: var(--a-href); 
+  overflow-wrap: break-word; /* fixes long links overflowing */
+}
+a[href]:hover{
+  color: var(--a-href-hover); 
+}
+
+a:focus {
+  outline: 2px solid var(--nord10); /* outline when tab is pressed */
+}

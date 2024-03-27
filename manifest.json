@@ -11,14 +11,17 @@
   "permissions": [
     "activeTab"
   ],
+  "options_ui": {
+      "page": "options.html"
+  },
   "content_scripts": [
     {
       "matches": ["*://capacitateparaelempleo.org/*"],
       "js": ["content.js", 
       "js/getExamData.js",
-      "js/catExamFull.js",
+      "js/setExamFull.js",
       "js/delExamFull.js",
-      "js/modExamFull.js"]
+      "js/viewExamFull.js"]
     }
   ]
 }

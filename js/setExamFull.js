@@ -1,5 +1,5 @@
-function catExamFull() {
-  console.log("catExamFull function called");
+function setExamFull() {
+  console.log("setExamFull function called");
 
   if (localStorage.getItem("examData")) {
     const examData = JSON.parse(localStorage.getItem("examData"));

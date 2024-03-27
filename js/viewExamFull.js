@@ -1,4 +1,4 @@
-function modExamFull() {
+function viewExamFull() {
     const examFullContent = localStorage.getItem("examFull");
 
     if (examFullContent) {
@@ -24,5 +24,4 @@ function modExamFull() {
         console.error("No se encontró el contenido de examFull.json en el almacenamiento local.");
     }
 }
- // Llamar a la función cuando la página modExamFull se cargue
- window.onload = modExamFull;
+viewExamFull();
