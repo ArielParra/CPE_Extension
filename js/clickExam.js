@@ -16,9 +16,8 @@ function clickExam() {
 
         if (examButtons.length > 0) {
             let count = examButtons.length;
-            alert("Hay " + count + " exameness. Que examen quieres hacer click:");
-
-            let examNumber = parseInt(prompt("Enter the exam number (1 to " + count + "):"));
+            
+            let examNumber = parseInt(prompt("Introduce un examen desde 1 hasta " + count + "):"));
 
             if (examNumber >= 1 && examNumber <= count) {
                 examButtons[examNumber - 1].click();

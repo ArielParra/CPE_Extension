@@ -30,7 +30,6 @@ function handleMessages(message) {
         case "setExamFull":
             getExamData();
             setExamFull();
-            //viewExamFull();
           break;
         case "delExamFull":
           delExamFull();
@@ -39,7 +38,13 @@ function handleMessages(message) {
     }
     //catExamFull
     if (message.type === "catExamFull") {
-      console.log("catExamFull message received "+message.examFull);
+      const examFull= localStorage.getItem("examFull");
+      if(examFull){
+          console.log("exist examFull");
+          const data = {type: "ExamFull", examFull};
+          //Error in event handler: TypeError: Cannot read properties of undefined (reading 'query')
+          sendResponse(data);
+      }
     }
   }
 }

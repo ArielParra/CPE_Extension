@@ -2,11 +2,11 @@
   "manifest_version": 3,
   "name": "CPE",
   "version": "1.0",
-  "description": "capacitateparaelempleo.org exam helper",
+  "description": "capacitateparaelempleo.org complementador de examenes",
   "action": {
     "default_icon": "icon.png",
     "default_title": "CPE",
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   },
   "icons": {
     "128": "icon.png"
@@ -17,13 +17,13 @@
     "tabs"
   ],
   "options_ui": {
-      "page": "options.html"
+      "page": "options/options.html"
   },
   "content_scripts": [
     {
       "matches": ["*://capacitateparaelempleo.org/*"],
       "js": [
-      "js/handleMessages.js",
+      "background.js",
       "js/sendMessage.js", 
       "js/getExamData.js",
       "js/setExamFull.js",
