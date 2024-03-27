@@ -1,10 +1,16 @@
+/**
+ * Retrieves and displays the content of the examFull.json file from local storage.
+ * If the file exists, it parses its content and logs information about each question and its options.
+ * If the file does not exist or there is an error parsing its content, appropriate error messages are logged.
+ */
 function viewExamFull() {
-    const examFullContent = localStorage.getItem("examFull");
+    console.log("viewExamFull function called");
 
+    const examFullContent = localStorage.getItem("examFull");
     if (examFullContent) {
         try {   
             const examFull = JSON.parse(examFullContent);
-            console.log("Contenido de examFull.json:");
+            console.log("examFull.json:");
             console.log(examFull.title);
 
             // Iterar sobre cada pregunta y mostrar sus respuestas
@@ -24,4 +30,3 @@ function viewExamFull() {
         console.error("No se encontró el contenido de examFull.json en el almacenamiento local.");
     }
 }
-viewExamFull();

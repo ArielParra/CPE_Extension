@@ -1,3 +1,8 @@
+/**
+ * Checks if examData is available in local storage, then updates or creates examFull accordingly.
+ * If examFull already exists, it appends unique questions from examData to it.
+ * If examData is not found, an error message is logged.
+ */
 function setExamFull() {
   console.log("setExamFull function called");
 
@@ -17,14 +22,14 @@ function setExamFull() {
       examFull.questions.push(...uniqueQuestions);
 
       localStorage.setItem("examFull", JSON.stringify(examFull));
-
+      console.log("Preguntas únicas agregadas a examFull.json");
       alert("Preguntas únicas agregadas a examFull.json");
-
     } else {
       localStorage.setItem("examFull", JSON.stringify(examData));
+      console.log("Archivo examFull.json creado y poblado con las preguntas de examData.json");
       alert("Archivo examFull.json creado y poblado con las preguntas de examData.json");
     }
   } else {
-    alert("Error: No se encontró el archivo examData.json");
+    console.log("Error: No se encontró examData.json");
   }
 }

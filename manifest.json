@@ -4,12 +4,17 @@
   "version": "1.0",
   "description": "capacitateparaelempleo.org exam helper",
   "action": {
-    "default_icon": "icon.svg",
+    "default_icon": "icon.png",
     "default_title": "CPE",
     "default_popup": "popup.html"
   },
+  "icons": {
+    "128": "icon.png"
+  },
   "permissions": [
-    "activeTab"
+    "storage",
+    "activeTab",
+    "tabs"
   ],
   "options_ui": {
       "page": "options.html"
@@ -17,11 +22,16 @@
   "content_scripts": [
     {
       "matches": ["*://capacitateparaelempleo.org/*"],
-      "js": ["content.js", 
+      "js": [
+      "js/handleMessages.js",
+      "js/sendMessage.js", 
       "js/getExamData.js",
       "js/setExamFull.js",
+      "js/catExamFull.js",
       "js/delExamFull.js",
-      "js/viewExamFull.js"]
+      "js/viewExamFull.js",
+      "js/clickExam.js"
+      ]
     }
   ]
 }

@@ -1,5 +1,33 @@
+/**
+ * Retrieves exam data from the current webpage and stores it in local storage as a JSON string.
+ * Exam data includes the exam title and questions with their respective options.
+ * If no exam data is found on the page, appropriate error messages are logged or displayed.
+ */
 function getExamData() {
   console.log("getExamData function called");
+
+  /**
+   * Represents the structure of the exam data.
+   * @typedef {Object} examData
+   * @property {string} title - The title of the exam.
+   * @property {Array} questions - An array of question objects.
+   */
+
+  /**
+   * Represents a single question with its options.
+   * @typedef {Object} question
+   * @property {string} title - The title or content of the question.
+   * @property {string} type - The type of the question (singleOption, multiOptions, or organizeOptions).
+   * @property {Array} options - An array of option objects.
+   */
+
+  /**
+   * Represents an option for a question.
+   * @typedef {Object} option
+   * @property {string} content - The content of the option.
+   */
+
+
   const examData = {
     title: "",
     questions: [],
@@ -65,12 +93,12 @@ function getExamData() {
     } // titlediv exist
      if (examData.questions.length > 0){
         localStorage.setItem("examData", JSON.stringify(examData));
-        alert("examData JSON saved");
+        console.log("examData.json guardado en localsotrage");
      } else {
-        alert("Error: No questions found");
+        console.log("Error: No se encontraron preguntas en esta pagina");
     }
   }else{
-    alert("Error: No exam found");
+    console.log("Error: No se encontro el examen en esta pagina");
  } // appCrearExamen exist
 
 } 

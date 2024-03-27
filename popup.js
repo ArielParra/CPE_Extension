@@ -1,17 +1,12 @@
+/**
+ * This function attaches event listeners to all buttons in the document and sends a message to the active tab
+ * when a button is clicked, the message is the id string of the button.
+ * It first checks the type of browser extension API available and sends the message accordingly.
+ */
 document.querySelectorAll("button").forEach(button => {
   button.addEventListener("click", function() {
     const buttonId = this.id;
-    if (typeof browser !== 'undefined') {
-      browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        browser.tabs.sendMessage(tabs[0].id, {type: "buttonClick", button: buttonId});
-      });
-    } else if (typeof chrome !== 'undefined') {
-      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {type: "buttonClick", button: buttonId});
-      });
-    } else {
-      console.error("No se pudo detectar la API de extensiones.");
-    }
+    const message = { type: "buttonClick", button: buttonId };
+    sendMessage(message);
   });
 });
-

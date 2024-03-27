@@ -16,8 +16,8 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] Guardar las respuestas de ordenacion
 - [x] Guardar los datos en un archivo temporal (JSON)
 - [x] popup de la extension con botones
-- [ ] guardar todas las preguntas discriminando las repetidas
-- [ ] CSS
+- [x] guardar todas las preguntas discriminando las repetidas
+- [x] CSS
 - [ ] Ir automaticamente al examen
 - [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
 - [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
