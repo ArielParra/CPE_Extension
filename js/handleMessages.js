@@ -28,13 +28,9 @@ function handleMessages(message) {
           clickExam();
           break;
         case "setExamFull":
-          clickExam();
-          setTimeout(function() {
             getExamData();
             setExamFull();
-            //catExamFull();
-            viewExamFull();
-          }, 1500);
+            //viewExamFull();
           break;
         case "delExamFull":
           delExamFull();

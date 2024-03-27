@@ -21,13 +21,16 @@ function setExamFull() {
 
       examFull.questions.push(...uniqueQuestions);
 
-      localStorage.setItem("examFull", JSON.stringify(examFull));
-      console.log("Preguntas únicas agregadas a examFull.json");
-      alert("Preguntas únicas agregadas a examFull.json");
+      if(uniqueQuestions != 0){
+        localStorage.setItem("examFull", JSON.stringify(examFull));
+        console.log("Preguntas únicas agregadas a examFull.json");
+      } else {
+        console.log("No habia Preguntas únicas para agregar");
+      }
+ 
     } else {
       localStorage.setItem("examFull", JSON.stringify(examData));
       console.log("Archivo examFull.json creado y poblado con las preguntas de examData.json");
-      alert("Archivo examFull.json creado y poblado con las preguntas de examData.json");
     }
   } else {
     console.log("Error: No se encontró examData.json");

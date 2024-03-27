@@ -27,7 +27,6 @@
       "js/sendMessage.js", 
       "js/getExamData.js",
       "js/setExamFull.js",
-      "js/catExamFull.js",
       "js/delExamFull.js",
       "js/viewExamFull.js",
       "js/clickExam.js"

@@ -1,17 +1,35 @@
-function clickExam(){
+/**
+ * Clicks on the exam button within the app-estructura-curso element.
+ */
+function clickExam() {
     console.log("clickExam function called");
     const appEstructuraCurso = document.querySelector("app-estructura-curso");
     if (appEstructuraCurso) {
         const buttons = appEstructuraCurso.querySelectorAll('button.mat-focus-indicator.mat-button.mat-button-base');
-        const examButton = buttons[buttons.length - 1]; // Select the last button
-        if (examButton) {
-            examButton.click();
-            console.log('clicked the exam button');
+        let examButtons = [];
+        buttons.forEach(button => {
+            // Check if the button text contains "Examen"
+            if (button.textContent.includes("Examen")) {
+                examButtons.push(button); // Add the button to the examButtons array
+            }
+        });
+
+        if (examButtons.length > 0) {
+            let count = examButtons.length;
+            alert("Hay " + count + " exameness. Que examen quieres hacer click:");
+
+            let examNumber = parseInt(prompt("Enter the exam number (1 to " + count + "):"));
+
+            if (examNumber >= 1 && examNumber <= count) {
+                examButtons[examNumber - 1].click();
+                console.log("Clicked exam number " + examNumber);
+            } else {
+                alert("Invalid exam number. Please enter a number between 1 and " + count + ".");
+            }
         } else {
-            console.error('No buttons found within app-estructura-curso.');
+            console.log('No exams found on this page.');
         }
     } else {
-        console.error('Element app-estructura-curso not found.');
-        alert('No se encontro el examen en esta pagina.')
+        console.log('No se encontro el examen en esta pagina.');
     }
 }

@@ -1,3 +1,7 @@
+/**
+ * Sends a message to the active tab in the browser.
+ * @param {Object} message - The message to be sent.
+ */
 function sendMessage(message) {
     if (typeof browser !== 'undefined') {
         browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
