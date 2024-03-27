@@ -24,12 +24,15 @@
       "matches": ["*://capacitateparaelempleo.org/*"],
       "js": [
       "background.js",
+      "js/clickExam.js",
       "js/sendMessage.js", 
       "js/getExamData.js",
       "js/setExamFull.js",
       "js/delExamFull.js",
       "js/viewExamFull.js",
-      "js/clickExam.js"
+      "js/getBrowserStorage.js",
+      "js/setBrowserStorage.js",
+      "js/delBrowserStorage.js"
       ]
     }
   ]

@@ -27,7 +27,6 @@ function getExamData() {
    * @property {string} content - The content of the option.
    */
 
-
   const examData = {
     title: "",
     questions: [],

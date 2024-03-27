@@ -8,9 +8,8 @@ function clickExam() {
         const buttons = appEstructuraCurso.querySelectorAll('button.mat-focus-indicator.mat-button.mat-button-base');
         let examButtons = [];
         buttons.forEach(button => {
-            // Check if the button text contains "Examen"
             if (button.textContent.includes("Examen")) {
-                examButtons.push(button); // Add the button to the examButtons array
+                examButtons.push(button);
             }
         });
 
@@ -23,10 +22,10 @@ function clickExam() {
                 examButtons[examNumber - 1].click();
                 console.log("Clicked exam number " + examNumber);
             } else {
-                alert("Invalid exam number. Please enter a number between 1 and " + count + ".");
+                alert("Error: introduce un numero del 1 al " + count + ".");
             }
         } else {
-            console.log('No exams found on this page.');
+            console.log('No exam buttons found on this page.');
         }
     } else {
         console.log('No se encontro el examen en esta pagina.');

@@ -34,16 +34,26 @@ function handleMessages(message) {
         case "delExamFull":
           delExamFull();
           break;
-      }
-    }
-    //catExamFull
-    if (message.type === "catExamFull") {
-      const examFull= localStorage.getItem("examFull");
-      if(examFull){
-          console.log("exist examFull");
-          const data = {type: "ExamFull", examFull};
-          //Error in event handler: TypeError: Cannot read properties of undefined (reading 'query')
-          sendResponse(data);
+        case "delExamFull":
+            delExamFull();
+        break;
+        case "setBrowserStorage":
+          setBrowserStorage("examFull",localStorage.getItem("examFull"));
+        break;
+        case "getBrowserStorage":
+          let json;
+          getBrowserStorage("examFull",(data) => {
+            // Inside the callback function, handle the retrieved data
+            if (data) {
+                console.log('Retrieved data:', data);
+            } else {
+                console.log('No data found for key:', key);
+            }
+          });
+        break;
+        case "delBrowserStorage":
+          delBrowserStorage();
+        break;
       }
     }
   }
