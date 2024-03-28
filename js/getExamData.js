@@ -35,11 +35,16 @@ function getExamData() {
 
   const appCrearExamen = document.querySelector("app-crear-examen");
 
-  if (appCrearExamen) {
+  if (appCrearExamen){
     const titleDiv = appCrearExamen.querySelector("div.title-exam.ng-star-inserted");
 
     if (titleDiv) {
       examData.number = titleDiv.querySelector('p').textContent.trim();
+      if(!cookieExists("examNumber")){
+        const numberRegex = /\d+/;
+        const examNumber = examData.number.match(numberRegex)[0]; 
+        setExamCookie(examNumber);
+      }
       examData.title = titleDiv.querySelector('h2').textContent.trim();
 
       const matCards = appCrearExamen.querySelectorAll("mat-card.mat-card.mat-focus-indicator.question");

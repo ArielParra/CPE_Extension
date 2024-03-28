@@ -24,6 +24,8 @@
       "matches": ["*://capacitateparaelempleo.org/*"],
       "js": [
       "background.js",
+      "js/cookies.js",
+      "js/setExamCookie.js",
       "js/clickExam.js",
       "js/sendMessage.js", 
       "js/getExamData.js",

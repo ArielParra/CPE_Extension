@@ -22,7 +22,7 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] compatible con firefox y chrome
 - [x] Ir al examen desde la extension
 - [x] ver examen desde la extension
-- [ ] cookie o localstorage de el examen para hacer actualmente 
+- [x] cookie de el examen  
 - [ ] modificar las respuestas del examen desde la extension
 - [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
 - [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 

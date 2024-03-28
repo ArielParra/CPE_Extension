@@ -24,6 +24,9 @@ function handleMessages(message) {
   //button Message
     if (message.type === "buttonClick") {
       switch (message.button) {
+        case "setExamCookie":
+          setExamCookie();
+          break;
         case "clickExam":
           clickExam();
           break;

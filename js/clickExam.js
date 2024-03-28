@@ -16,13 +16,15 @@ function clickExam() {
         if (examButtons.length > 0) {
             let count = examButtons.length;
             
-            let examNumber = parseInt(prompt("Introduce un examen desde 1 hasta " + count + "):"));
+            if(cookieExists("examNumber")){
+                let examNumber = getCookie("examNumber");
 
-            if (examNumber >= 1 && examNumber <= count) {
-                examButtons[examNumber - 1].click();
-                console.log("Clicked exam number " + examNumber);
+                if (examNumber >= 1 && examNumber <= count) {
+                    examButtons[examNumber - 1].click();
+                    console.log("Clicked exam number " + examNumber);
+                }
             } else {
-                alert("Error: introduce un numero del 1 al " + count + ".");
+                console.log("ERROR: no existe la cookie examNumber.");
             }
         } else {
             console.log('No exam buttons found on this page.');
