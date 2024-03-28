@@ -24,9 +24,10 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] ver examen desde la extension
 - [x] cookie de el examen  
 - [ ] modificar las respuestas del examen desde la extension
-- [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
+- [ ] logica por tipo de respuesta
 - [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
-- [ ] Contestar el examen hasta sacar 10
+- [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
+- [ ] Contestar el examen hasta sacar 10 y comprobar la calificacion
 - [ ] Optimizaciones
 
 # credits

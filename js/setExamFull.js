@@ -8,10 +8,13 @@ function setExamFull() {
 
   if (localStorage.getItem("examData")) {
     const examData = JSON.parse(localStorage.getItem("examData"));
+    const examDataNumberAndTitle= examData.number + examData.title;
 
     if (localStorage.getItem("examFull")) {
       const examFull = JSON.parse(localStorage.getItem("examFull"));
-      if(examData.title!=examFull.title){ 
+      const examFullNumberAndTitle= examFull.number + examFull.title;
+
+      if(examDataNumberAndTitle!=examFullNumberAndTitle){ 
         alert("El examen no es el mismo, favor de primero borra el examFull.json y vuelve a cargar el examData.json")
         return;
       }
