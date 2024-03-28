@@ -28,6 +28,7 @@ function getExamData() {
    */
 
   const examData = {
+    number: "",
     title: "",
     questions: [],
   };//type for the JSON
@@ -38,7 +39,8 @@ function getExamData() {
     const titleDiv = appCrearExamen.querySelector("div.title-exam.ng-star-inserted");
 
     if (titleDiv) {
-      examData.title = titleDiv.textContent.trim(); // Exam title 
+      examData.number = titleDiv.querySelector('p').textContent.trim();
+      examData.title = titleDiv.querySelector('h2').textContent.trim();
 
       const matCards = appCrearExamen.querySelectorAll("mat-card.mat-card.mat-focus-indicator.question");
 

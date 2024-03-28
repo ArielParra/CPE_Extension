@@ -40,17 +40,6 @@ function handleMessages(message) {
         case "setBrowserStorage":
           setBrowserStorage("examFull",localStorage.getItem("examFull"));
         break;
-        case "getBrowserStorage":
-          let json;
-          getBrowserStorage("examFull",(data) => {
-            // Inside the callback function, handle the retrieved data
-            if (data) {
-                console.log('Retrieved data:', data);
-            } else {
-                console.log('No data found for key:', key);
-            }
-          });
-        break;
         case "delBrowserStorage":
           delBrowserStorage();
         break;

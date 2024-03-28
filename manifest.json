@@ -29,7 +29,6 @@
       "js/getExamData.js",
       "js/setExamFull.js",
       "js/delExamFull.js",
-      "js/viewExamFull.js",
       "js/getBrowserStorage.js",
       "js/setBrowserStorage.js",
       "js/delBrowserStorage.js"
