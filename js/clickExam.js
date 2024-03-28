@@ -15,7 +15,7 @@ function clickExam() {
 
         if (examButtons.length > 0) {
             let count = examButtons.length;
-            examButtons[0].click();//to refresh the exam
+            buttons[0].click();//to refresh the exam
             if(cookieExists("examNumber")){
                 let examNumber = getCookie("examNumber");
 

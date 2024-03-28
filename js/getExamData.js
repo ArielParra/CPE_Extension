@@ -12,21 +12,6 @@ function getExamData() {
    * @property {string} title - The title of the exam.
    * @property {Array} questions - An array of question objects.
    */
-
-  /**
-   * Represents a single question with its options.
-   * @typedef {Object} question
-   * @property {string} title - The title or content of the question.
-   * @property {string} type - The type of the question (singleOption, multiOptions, or organizeOptions).
-   * @property {Array} options - An array of option objects.
-   */
-
-  /**
-   * Represents an option for a question.
-   * @typedef {Object} option
-   * @property {string} content - The content of the option.
-   */
-
   const examData = {
     number: "",
     title: "",
@@ -43,7 +28,7 @@ function getExamData() {
       if(!cookieExists("examNumber")){
         const numberRegex = /\d+/;
         const examNumber = examData.number.match(numberRegex)[0]; 
-        setExamCookie(examNumber);
+        setCookie("examNumber", examNumber, 1);
       }
       examData.title = titleDiv.querySelector('h2').textContent.trim();
 
@@ -51,7 +36,19 @@ function getExamData() {
 
       if (matCards.length > 0) {
         matCards.forEach((matCard, index) => {
+          /**
+           * Represents an option for a question.
+           * @typedef {Object} option
+           * @property {string} content - The content of the option.
+           */
           const options = [];
+          /**
+           * Represents a single question with its options.
+           * @typedef {Object} question
+           * @property {string} title - The title or content of the question.
+           * @property {string} type - The type of the question (singleOption, multiOptions, or organizeOptions).
+           * @property {Array} options - An array of option objects.
+           */
           const question = {
             title: "",
             type: "",
