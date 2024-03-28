@@ -25,8 +25,8 @@ window.onload = getBrowserStorage("examFull", (data) => {
              * HTML content representing the exam information.
              * @type {String}
              */
-            let htmlContent = `<h1>${examFull.number}</h1>`;
-                htmlContent += `<h2>${examFull.title}</h2>`;
+            let htmlContent = `<h3>${examFull.number}</h3>`;
+                htmlContent += `<h1>${examFull.title}</h1>`;
             
             examFull.questions.forEach((question, index) => {
                 htmlContent += `<h4>Pregunta ${index + 1}: ${question.title}</h4>`;

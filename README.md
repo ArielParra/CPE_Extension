@@ -1,12 +1,13 @@
 # CPE_Extension
+Esta es una extension para navegadores basados en firefox y chromium (chrome,edge,brave,opera,etc.) 
+Su funcion es complentar los examenes de la pagina de Capacitate Para El Empleo, el uso indebido es responsabilidad del usuario.
 
-Esta extension para Firefox es para complentar los examenes, no esta creada con el fin de realizar trampa, el uso indebido es responsabilidad del usuario.
-
+ESTA EXTENSION ESTA EN ESTADO DE BETA!
 
 La unica linea de los terminos y condiciones, que referencia algun uso indebido dentro de dicha pagina es:
-"Usted no puede obtener ni intentar obtener material o información utilizando otros medios que expresa e intencionalmente sean ofrecidos para tal efecto en el Sitio Web." (recuperados de: https://capacitateparaelempleo.org/terminos )
+"Usted no puede obtener ni intentar obtener material o información utilizando otros medios que expresa e intencionalmente sean ofrecidos para tal efecto en el Sitio Web." (recuperado de: https://capacitateparaelempleo.org/terminos )
 
-aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de extensiones, insercion de scripts de JS y/o web crawlers/scrappers no se prohibe directamente.
+aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de extensiones, insercion de scripts de JS y/o web crawlers/scrappers no se prohibe explicitamente.
 
 # Roadmap
 
@@ -23,12 +24,14 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] Ir al examen desde la extension
 - [x] ver examen desde la extension
 - [x] cookie de el examen  
-- [ ] modificar las respuestas del examen desde la extension
 - [ ] logica por tipo de respuesta
+- [ ] modificar las respuestas del examen desde la extension
+- [ ] guardar examFull desde browser storage hacia la pc
 - [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
 - [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
 - [ ] Contestar el examen hasta sacar 10 y comprobar la calificacion
-- [ ] Optimizaciones
+- [ ] capacidad de realizar diplomados completos al completar cada uno de sus cursos guardando cookies del curso para hacer
+- [ ] javastrip y optimizaciones
 
 # credits
 

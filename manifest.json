@@ -8,6 +8,8 @@
     "default_title": "CPE",
     "default_popup": "popup/popup.html"
   },
+  "homepage_url": "https://github.com/ArielParra/CPE_Extension",
+  "license": "MIT",
   "icons": {
     "128": "icon.png"
   },
