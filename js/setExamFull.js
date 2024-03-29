@@ -4,7 +4,6 @@
  * If examData is not found, an error message is logged.
  */
 function setExamFull() {
-  console.log("setExamFull function called");
 
   if (localStorage.getItem("examData")) {
     const examData = JSON.parse(localStorage.getItem("examData"));
@@ -26,19 +25,15 @@ function setExamFull() {
 
       if(uniqueQuestions != 0){
         localStorage.setItem("examFull", JSON.stringify(examFull));
-        console.log("Preguntas únicas agregadas a examFull.json");
-        alert("Preguntas únicas agregadas a examFull.json");
+        console.log("Unique questions added to examFull.json");
       } else {
-        console.log("No habia Preguntas únicas para agregar");
-        alert("No habia Preguntas únicas para agregar");
+        console.log("No unique questions to add");
       }
- 
     } else {
       localStorage.setItem("examFull", JSON.stringify(examData));
-      console.log("Archivo examFull.json creado y poblado con las preguntas de examData.json");
-      alert("Archivo examFull.json creado y poblado con las preguntas de examData.json");
+      console.log("examFull.json file created and filled with questions from examData.json");
     }
   } else {
-    console.log("Error: No se encontró examData.json");
+    console.log("Error: examData.json not found in localStorage");
   }
 }

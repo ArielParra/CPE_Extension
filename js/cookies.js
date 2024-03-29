@@ -36,7 +36,7 @@ function getCookie(name) {
  * @param {string} name - The name of the cookie to delete.
  */
 function delCookie(name) {
-    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = name + '=' + null + ";expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;SameSite=None;Secure";
 }
 
 

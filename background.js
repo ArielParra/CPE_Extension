@@ -30,15 +30,21 @@ function handleMessages(message) {
         case "clickExam":
           clickExam();
           break;
+        case "clickButtons":
+          clickButtons();  
+          break;
         case "setExamFull":
             getExamData();
             setExamFull();
           break;
         case "setBrowserStorage":
           setBrowserStorage("examFull",localStorage.getItem("examFull"));
-        break;
+          break;
         case "delCookie":
           delCookie("examNumber");
+          break;
+        case "debug":
+          debug();
           break;
         case "delLocalStorage":
           delLocalStorage("examData");
@@ -46,7 +52,7 @@ function handleMessages(message) {
           break;
         case "delBrowserStorage":
           delBrowserStorage();
-        break;
+          break;
       }
     }
   }

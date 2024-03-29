@@ -8,7 +8,7 @@ function sendMessage(message) {
             if (tabs.length > 0) {
                 browser.tabs.sendMessage(tabs[0].id, message);
             } else {
-                console.error("No active tabs found.");
+                console.error("ERROR: No active tabs found.");
             }
         });
     } else if (typeof chrome !== 'undefined') {
@@ -16,10 +16,10 @@ function sendMessage(message) {
             if (tabs.length > 0) {
                 chrome.tabs.sendMessage(tabs[0].id, message);
             } else {
-                console.error("No active tabs found.");
+                console.error("ERROR: No active tabs found.");
             }
         });
     } else {
-        console.error("Extension API not detected.");
+        console.error("ERROR: Extension API not detected.");
     }
 }

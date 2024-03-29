@@ -4,8 +4,6 @@
  * If no exam data is found on the page, appropriate error messages are logged or displayed.
  */
 function getExamData() {
-  console.log("getExamData function called");
-
   /**
    * Represents the structure of the exam data.
    * @typedef {Object} examData
@@ -96,12 +94,12 @@ function getExamData() {
     } // titlediv exist
      if (examData.questions.length > 0){
         localStorage.setItem("examData", JSON.stringify(examData));
-        console.log("examData.json guardado en localsotrage");
-     } else {
-        console.log("Error: No se encontraron preguntas en esta pagina");
-    }
+        console.log("examData.json saved in localStorage");
+      } else {
+        console.log("Error: No questions found on this page");
+      }
   }else{
-    console.log("Error: No se encontro el examen en esta pagina");
- } // appCrearExamen exist
+    console.log("Error: No exam found on this page");
+  } // appCrearExamen exist
 
 } 

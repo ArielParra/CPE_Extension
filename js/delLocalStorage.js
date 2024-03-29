@@ -4,12 +4,9 @@
  * Logs any errors that occur during the deletion process.
  */
 function delLocalStorage(key) {
-    console.log("delLocalStorage function called");
     try {
         localStorage.removeItem(key);
-        alert("Archivo "+ key +" eliminado");
     } catch (error) {
         console.error("Error al intentar eliminar "+ key + ", ", error);
-        alert("Error al intentar eliminar "+ key);
     }
 }

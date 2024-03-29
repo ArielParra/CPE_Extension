@@ -9,13 +9,11 @@
  * @throws Error if the browser extension API is not detected.
  */
 function setBrowserStorage(key, value) {
-    console.log("setBrowserStorage function called");
     if (typeof browser !== 'undefined') {
         browser.storage.local.set({ [key]: value });
-        alert("key saved");
     } else if (typeof chrome !== 'undefined') {
         chrome.storage.local.set({ [key]: value });
     } else {
-        console.error("Extension API not detected.");
+        console.error("ERROR: Extension API not detected.");
     }
 }

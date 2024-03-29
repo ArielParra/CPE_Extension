@@ -10,7 +10,6 @@
  * @throws Error if the browser extension API is not detected.
  */
 function getBrowserStorage(key, callback) {
-    console.log("getBrowserStorage function called");
     if (typeof browser !== 'undefined') {
         browser.storage.local.get([key], (result) => {
             callback(result[key]);

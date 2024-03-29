@@ -11,11 +11,9 @@ function delBrowserStorage() {
     if (typeof browser !== 'undefined') {
         browser.storage.local.clear(() => {
         });
-        alert("Local storage cleared.");
     } else if (typeof chrome !== 'undefined') {
         chrome.storage.local.clear(() => {
         });
-        alert("Local storage cleared.");
     } else {
         console.error("Extension API not detected.");
     }
