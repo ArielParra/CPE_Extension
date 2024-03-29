@@ -9,6 +9,7 @@ function getExamData() {
   /**
    * Represents the structure of the exam data.
    * @typedef {Object} examData
+   * @property {char} title - The number of the exam.
    * @property {string} title - The title of the exam.
    * @property {Array} questions - An array of question objects.
    */
@@ -24,11 +25,9 @@ function getExamData() {
     const titleDiv = appCrearExamen.querySelector("div.title-exam.ng-star-inserted");
 
     if (titleDiv) {
-      examData.number = titleDiv.querySelector('p').textContent.trim();
+      examData.number = titleDiv.querySelector('p').textContent.match(/\d+/)[0];
       if(!cookieExists("examNumber")){
-        const numberRegex = /\d+/;
-        const examNumber = examData.number.match(numberRegex)[0]; 
-        setCookie("examNumber", examNumber, 1);
+        setCookie("examNumber", examData.number, 1);
       }
       examData.title = titleDiv.querySelector('h2').textContent.trim();
 

@@ -52,6 +52,8 @@ body{
   opacity: 0;
   transform: translateY(-20px); 
   animation: fadeInFromBottom 500ms ease forwards;
+  min-width: 400px; 
+  min-height: 400px; 
 }
 
 @keyframes fadeInFromBottom { /* load in animation */

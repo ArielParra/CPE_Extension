@@ -23,9 +23,11 @@ function clickButtons() {
                     await new Promise(resolve => setTimeout(resolve, 100)); 
                 }
                 await clickButtonAtIndex(index + 1); 
+            } else {
+                location.reload(); // After all buttons have been clicked, reload the page
             }
         }
-        clickButtonAtIndex(0);
+        clickButtonAtIndex(0); 
     } else {
         console.log('No exam found on this page.');
     }
