@@ -24,6 +24,7 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] Ir al examen desde la extension
 - [x] ver examen desde la extension
 - [x] cookie de el examen  
+- [x] hacer click en los demas elementos
 - [ ] logica por tipo de respuesta
 - [ ] modificar las respuestas del examen desde la extension
 - [ ] guardar examFull desde browser storage hacia la pc

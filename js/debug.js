@@ -1,3 +1,11 @@
+/**
+ * @description Logs debug information related to the extension's environment and stored data.
+ * Checks the type of browser API (Firefox or Chrome) being used.
+ * Checks for the existence of certain data in local storage and cookies.
+ * Retrieves and logs the status of the 'examFull' data from browser storage.
+ * 
+ * @function debug
+ */
 function debug() {
     typeof browser !== 'undefined' ? console.log("Extension API: firefox") :
     typeof chrome !== 'undefined' ? console.log("Extension API: chrome") :

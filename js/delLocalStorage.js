@@ -1,12 +1,13 @@
 /**
- * Deletes the examFull.json file from local storage if it exists.
- * Displays an alert message to notify the user about the deletion.
- * Logs any errors that occur during the deletion process.
+ * @description Deletes a key-value pair from the browser's local storage.
+ * 
+ * @function delLocalStorage
+ * @param {string} key - The key corresponding to the value to be deleted from local storage.
  */
 function delLocalStorage(key) {
     try {
         localStorage.removeItem(key);
     } catch (error) {
-        console.error("Error al intentar eliminar "+ key + ", ", error);
+        console.error("ERROR: al trying to delete key: "+ key + ", ", error);
     }
 }

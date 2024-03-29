@@ -1,5 +1,7 @@
 /**
- * Sends a message to the active tab in the browser.
+ * @description Sends a message to the active tab in the browser.
+ * 
+ * @function sendMessage
  * @param {Object} message - The message to be sent.
  */
 function sendMessage(message) {

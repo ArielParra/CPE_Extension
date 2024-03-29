@@ -1,3 +1,8 @@
+/**
+ * @description Prompts the user to set an exam number as a cookie based on the available exams on the page.
+ * 
+ * @function setExamCookie
+ */
 function setExamCookie(){
     const appEstructuraCurso = document.querySelector("app-estructura-curso");
     if (appEstructuraCurso) {

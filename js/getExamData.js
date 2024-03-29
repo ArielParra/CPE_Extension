@@ -1,7 +1,9 @@
 /**
- * Retrieves exam data from the current webpage and stores it in local storage as a JSON string.
+ * @description Retrieves exam data from the current webpage and stores it in local storage as a JSON string.
  * Exam data includes the exam title and questions with their respective options.
  * If no exam data is found on the page, appropriate error messages are logged or displayed.
+ *
+* @function getExamData
  */
 function getExamData() {
   /**

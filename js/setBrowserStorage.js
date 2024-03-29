@@ -1,12 +1,9 @@
 /**
- * Stores data in the local storage of a browser extension using the appropriate API based on the browser environment.
- * If the browser supports the 'browser' API , data is stored using browser.storage.local.
- * If the browser supports the 'chrome' API , data is stored using chrome.storage.local.
- * If neither API is available, an error message is logged indicating that the extension API is not detected.
- *
- * @param key The key under which the data will be stored.
- * @param value The data to be stored. This should be an object.
- * @throws Error if the browser extension API is not detected.
+ * @description Sets a key-value pair in the browser's local storage or storage API based on the browser type.
+ * 
+ * @function setBrowserStorage
+ * @param {string} key - The key under which to store the value.
+ * @param {*} value - The value to store.
  */
 function setBrowserStorage(key, value) {
     if (typeof browser !== 'undefined') {

@@ -1,5 +1,10 @@
 /**
- * Clicks on the exam button within the app-estructura-curso element.
+ * @description Finds and clicks on exam buttons within a specific DOM element, refreshing the exam if necessary.
+ * This function is designed to automate the process of clicking on exam buttons on a webpage.
+ * It searches for buttons containing the text "Examen" within the 'app-estructura-curso' element and clicks them sequentially.
+ * If a specific exam number is stored in a cookie, it clicks on that exam button after refreshing the exam.
+ * 
+ * @function clickExam
  */
 function clickExam() {
     const appEstructuraCurso = document.querySelector("app-estructura-curso");

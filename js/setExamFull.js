@@ -1,7 +1,15 @@
 /**
- * Checks if examData is available in local storage, then updates or creates examFull accordingly.
- * If examFull already exists, it appends unique questions from examData to it.
- * If examData is not found, an error message is logged.
+ * @descriotion Updates the 'examFull' data in local storage based on the 'examData' stored.
+ * 
+ * If 'examData' is present in local storage:
+ * - If 'examFull' is already present, checks if the exam is the same. If not, prompts the user to delete 'examFull'.
+ * - Compares 'examData' and 'examFull' to find unique questions and adds them to 'examFull'.
+ * - Saves the updated 'examFull' in local storage.
+ * - Logs appropriate messages based on the actions performed.
+ * 
+ * If 'examData' is not present in local storage, logs an error message.
+ * 
+ * @function setExamFull
  */
 function setExamFull() {
 
