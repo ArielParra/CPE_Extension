@@ -36,22 +36,17 @@ function getExamData() {
       if (matCards.length > 0) {
         matCards.forEach((matCard, index) => {
           /**
-           * Represents an option for a question.
-           * @typedef {Object} option
-           * @property {string} content - The content of the option.
-           */
-          const options = [];
-          /**
            * Represents a single question with its options.
            * @typedef {Object} question
            * @property {string} title - The title or content of the question.
            * @property {string} type - The type of the question (singleOption, multiOptions, or organizeOptions).
+           * @property {Array} anwer - The answers
            * @property {Array} options - An array of option objects.
            */
           const question = {
             title: "",
             type: "",
-            anwer: [],
+            answers: [],
             options: [],
           };
 
@@ -88,10 +83,30 @@ function getExamData() {
             question.type = "organizeOptions";
             question.options.push(option);
             }); // foreach span
+
           } // span exist
+
+          //initialize answers array 
+          switch(question.type){
+            case "singleOption": 
+              question.answers.push(0);//sigle answer
+              break;
+            case "multiOptions":
+              for (let i = 0; i < question.options.length; i++) {
+                question.answers.push(i);
+              }
+              break;
+            case "organizeOptions": 
+              for (let i = 0; i < question.options.length; i++) {
+                question.answers.push(i);
+              }
+             break;
+          }
+
           examData.questions.push(question);
         }); // matcard forEach
       } // matcards exist
+
     } // titlediv exist
      if (examData.questions.length > 0){
         localStorage.setItem("examData", JSON.stringify(examData));
