@@ -52,7 +52,6 @@ function getBrowserStorage(key, callback) {
  * @function delBrowserStorage
  */
 function delBrowserStorage() {
-    console.log("delBrowserStorage function called");
     if (typeof browser !== 'undefined') {
         browser.storage.local.clear(() => {
         });

@@ -37,17 +37,13 @@ function handleMessages(message) {
             getExamData();
             setExamFull();
           break;
-        case "delCookie":
+        case "delExtensionData":
           delCookie("examNumber");
+          delLocalStorage("examData");
+          delBrowserStorage();
           break;
         case "debug":
           debug();
-          break;
-        case "delLocalStorage":
-          delLocalStorage("examData");
-          break;
-        case "delBrowserStorage":
-          delBrowserStorage();
           break;
       }
     }

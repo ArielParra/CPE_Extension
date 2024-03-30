@@ -124,6 +124,8 @@ window.onload =  function() {
             uploadJSON(file); 
             if(file){
                 location.reload();
+            } else {
+                alert("Sin archivo seleccionado");
             }
         });    
 

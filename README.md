@@ -28,7 +28,12 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] logica por tipo de respuesta
 - [x] modificar las respuestas del examen desde la extension
 - [x] guardar examFull desde browser storage hacia la pc
-- [ ] importar examFUll con respuestas desde el pc hacia el browser storage
+- [x] importar examFull con respuestas desde el pc hacia el browser storage
+- [ ] getExamData and compare to examFull and get custom answers 
+- [ ] view answers browserStorage var
+- [ ] button to copy questions 
+- [ ] sticky side bar
+- [ ] visible examNumber cookie in popup
 - [ ] Recargar el examen varias veces para recaudar todas las preguntas
 - [ ] Contestar el examen y comprobar la calificacion
 - [ ] capacidad de realizar diplomados completos al completar cada uno de sus cursos guardando cookies del curso para hacer
