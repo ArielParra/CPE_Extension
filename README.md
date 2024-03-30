@@ -25,13 +25,12 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] ver examen desde la extension
 - [x] cookie de el examen  
 - [x] hacer click en los demas elementos
-- [ ] logica por tipo de respuesta
-- [ ] modificar las respuestas del examen desde la extension
-- [ ] guardar examFull desde browser storage hacia la pc
+- [x] logica por tipo de respuesta
+- [x] modificar las respuestas del examen desde la extension
+- [x] guardar examFull desde browser storage hacia la pc
 - [ ] importar examFUll con respuestas desde el pc hacia el browser storage
-- [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
-- [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
-- [ ] Contestar el examen hasta sacar 10 y comprobar la calificacion
+- [ ] Recargar el examen varias veces para recaudar todas las preguntas
+- [ ] Contestar el examen y comprobar la calificacion
 - [ ] capacidad de realizar diplomados completos al completar cada uno de sus cursos guardando cookies del curso para hacer
 - [ ] javastrip y optimizaciones
 

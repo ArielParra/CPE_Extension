@@ -73,6 +73,9 @@ window.onload =  function() {
             htmlContent += `<div class="side-panel">`;
             htmlContent +=`<button id="save">save</button>`
             htmlContent +=`<button id="hide">toggle Answers</button>`
+            htmlContent +=`<button id="download">download</button>`
+            htmlContent +=`<input type="file" id="fileInput" accept=".json">`
+            htmlContent +=`<button id="uploadButton">Upload JSON</button>`
             htmlContent += `</div>`;
             examInfoDiv.innerHTML = htmlContent;
 
@@ -93,6 +96,15 @@ window.onload =  function() {
             hideBUtton.addEventListener("click", function() {
                 toggleAnswersVisibility();
             });
+            const downloadButton = document.getElementById("download");
+            downloadButton.addEventListener("click", function() {
+                downloadJSON("examFull");
+            });  
+            /*TODO*/
+            const uploadButton = document.getElementById("download");
+            uploadButton.addEventListener("click", function() {
+                uploadButton
+            });                
 
 
         } catch (error) {
@@ -102,6 +114,7 @@ window.onload =  function() {
     } else {
         examInfoDiv.innerHTML = "<p>No se encontró el contenido de examFull.json en el almacenamiento de la extension..</p>";
         console.error("No examFull JSON found in browser's storage.");
+        
     }
     });
 }
@@ -197,3 +210,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+

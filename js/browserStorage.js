@@ -63,3 +63,69 @@ function delBrowserStorage() {
         console.error("Extension API not detected.");
     }
 }
+
+function downloadJSON(key) {
+    getBrowserStorage(key, (data) => {
+        if (data) {
+            console.log("Retrieved " + key + " from browser storage");
+            try {
+                const json = JSON.parse(data);
+                const jsonBlob = new Blob([JSON.stringify(json)], { type: 'application/json' });
+                const url = URL.createObjectURL(jsonBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = key + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error("Error parsing " + key + " JSON:", error);
+            }
+        } else {
+            console.error("No " + key + " in storage");
+        }
+    });
+}
+
+
+function setBrowserStorage(key, value) {
+    if (typeof browser !== 'undefined') {
+        browser.storage.local.set({ [key]: value });
+        console.log("Key: "+key+" stored in firefox storage.");
+    } else if (typeof chrome !== 'undefined') {
+        chrome.storage.local.set({ [key]: value });
+        console.log("Key: "+key+" stored in Chrome storage.");
+    } else {
+        console.error("ERROR: Extension API not detected.");
+    }
+}
+
+/*TODO */
+function uploadJSON(file){
+    if (file) {
+        const reader = new FileReader();
+        reader.readAsText(file);
+        reader.onload = function() {
+            const jsonData = JSON.parse(reader.result);
+            setBrowserStorage(key,JSON.stringify(jsonData))
+        };
+        reader.onerror = function() {
+            console.error("Error reading the file");
+        };
+    } else {
+        console.error("no file")
+    }
+}
+
+function setBrowserStorage(key, value) {
+    if (typeof browser !== 'undefined') {
+        browser.storage.local.set({ [key]: value });
+        console.log("Key: " + key + " stored in Firefox storage.");
+    } else if (typeof chrome !== 'undefined') {
+        chrome.storage.local.set({ [key]: value });
+        console.log("Key: " + key + " stored in Chrome storage.");
+    } else {
+        console.error("ERROR: Extension API not detected.");
+    }
+}
