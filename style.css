@@ -102,6 +102,8 @@ ul {
   margin: 0;
 }
 li {
+  display: block;
+  width: 50%; 
   padding: 10px;
   background-color: var(--blue);
   margin-bottom: 5px;
@@ -112,4 +114,17 @@ li:hover {
 }
 #examInfo li {
   cursor: move;
+}
+.hidden {
+  display: none;
+}
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0; 
+  width: 200px; 
+  background-color: var(--cyan);
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 }

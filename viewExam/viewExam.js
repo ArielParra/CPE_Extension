@@ -7,6 +7,9 @@
  * @param {Function} callback - Callback function that executes when the data has been retrieved.
  *                               This function is expected to take one parameter (the retrieved data).
  */
+
+let answersHidden = false;
+
 window.onload =  function() {
     getBrowserStorage("examFull", (data) => {
     /**
@@ -33,14 +36,19 @@ window.onload =  function() {
                 htmlContent += `<h4>Pregunta ${index + 1}: ${question.title}</h4>`;
                 //htmlContent += `<p>tipo : ${question.type}</p>`;
 
-                question.answers.forEach((answer, answerIndex) => {
-                    if (answerIndex === 0) {
-                        htmlContent += `<p id="answers-${index + 1}">Answer = ${answer+1}`;
-                    } else {
-                        htmlContent += `, ${answer+ 1}`;
-                    }
-                });
-                htmlContent += `</p>`
+                if (!answersHidden) { 
+
+                    question.answers.forEach((answer, answerIndex) => {
+                        if (answerIndex === 0) {
+                            htmlContent += `<p id="\answers-${index + 1}+"\">Answer = ${answer+1}`;
+                        } else {
+                            htmlContent += `, ${answer+ 1}`;
+                        }
+                    });
+                    htmlContent += `</p>`;
+                }
+                
+            
 
                 if (question.type === "singleOption") {
                     const radioGroupName = `question_${index + 1}`;
@@ -56,7 +64,6 @@ window.onload =  function() {
                 }
                 if (question.type === "organizeOptions") {
                     htmlContent += `<ul id="sortableList-${index + 1}">`; 
-                    // Loop through the options according to the order in examFull
                     question.options.forEach((option, optionIndex) => {
                         const originalIndex = examFull.questions[index].answers.indexOf(optionIndex);
                         htmlContent += `<li draggable="true" id="item${originalIndex +1  + index + 1}">${question.options[originalIndex].content}</li>`;
@@ -65,8 +72,10 @@ window.onload =  function() {
                 }
                 
             });
-            htmlContent += `<hr>`;
+            htmlContent += `<div class="side-panel">`;
             htmlContent +=`<button id="save">save</button>`
+            htmlContent +=`<button id="hide">toggle Answers</button>`
+            htmlContent += `</div>`;
             examInfoDiv.innerHTML = htmlContent;
 
             /*prevents unsafe-inline, the events listeners most be attatched after the html is written*/
@@ -81,6 +90,10 @@ window.onload =  function() {
             const saveButton = document.getElementById("save");
             saveButton.addEventListener("click", function() {
                 saveAnswers(); 
+            });
+            const hideBUtton = document.getElementById("hide");
+            hideBUtton.addEventListener("click", function() {
+                toggleAnswersVisibility();
             });
 
 
@@ -153,7 +166,13 @@ function saveAnswers() {
     location.reload();
 }
 
-
+function toggleAnswersVisibility() {
+    answersHidden = !answersHidden; 
+    const answers = document.querySelectorAll("p[id^='answers-']");
+    answers.forEach(answer => {
+        answer.classList.toggle("hidden");
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function () {
 
