@@ -60,19 +60,21 @@ window.onload =  function() {
                         htmlContent += `<li draggable="true" id="item${optionIndex + 1 + index + 1}">${option.content}</li>`;
                     });
                     htmlContent += `</ul>`;
+               
                 }
-                /*prevents unsafe-inline*/
-             const draggable = document.querySelectorAll('li[draggable="true"]');
-             draggable.forEach(item => {
-                 item.addEventListener('dragstart', function(event) {
-                     drag(event, this.parentNode.id);
-                 });
-             }); 
-
             });
             htmlContent += `<hr>`;
             //htmlContent +=`<button " onclick="saveAnswers"}>save</button>`
             examInfoDiv.innerHTML = htmlContent;
+
+            /*prevents unsafe-inline, the events listeners most be attatched after the html is written*/
+            const listItems = document.querySelectorAll('li[draggable="true"]');
+            console.log(listItems);
+            listItems.forEach(item => {
+            item.addEventListener('dragstart', function(event) {
+                drag(event, this.parentNode.id);
+                });
+            });
 
         } catch (error) {
             examInfoDiv.innerHTML = "<p>Error al analizar el contenido de examFull.json</p>";
@@ -86,20 +88,25 @@ window.onload =  function() {
 }
 
 function drag(ev, listId) {
+    console.log("drag function called ev:"+ev.target.id+", id:"+listId);
     ev.dataTransfer.setData("text", ev.target.id);
     ev.dataTransfer.setData("listId", listId);
 }
   
 document.addEventListener('DOMContentLoaded', function () {
     const listsContainer = document.getElementById('examInfo');
+    
 
     listsContainer.addEventListener('dragover', function (e) {
+        console.log("listened for dragover");
         e.preventDefault();
     });
 
     listsContainer.addEventListener('drop', function (e) {
+        console.log("listened for drop");
         e.preventDefault();
         const data = e.dataTransfer.getData("text");
+        console.log(data);
         const listId = e.dataTransfer.getData("listId");
         const draggedItem = document.getElementById(data);
         const target = e.target.closest('li');
@@ -113,5 +120,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-/* TODO: implement MoveListItems.html code into organizeOptions list ,
-   TODO: implement saveAnswers function */
+/*   TODO: implement saveAnswers function */
