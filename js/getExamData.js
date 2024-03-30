@@ -76,10 +76,11 @@ function getExamData() {
 
           //organizeoption exception
           if (spanElements.length > 0) {
-            spanElements.forEach((span) => {
+            spanElements.forEach((span, index) => {
               const option = {
-                content: span.textContent.trim(),
+                content: (index + 1) + "- " + span.textContent.trim(),
               };
+          
             question.type = "organizeOptions";
             question.options.push(option);
             }); // foreach span
