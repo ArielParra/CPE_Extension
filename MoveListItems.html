@@ -31,23 +31,30 @@
 window.onload = function() {
   const lists = document.getElementById("lists");
   let htmlContent = `<ul id="sortableList-1">`
-  htmlContent += `<li draggable="true" id="item1" ondragstart="drag(event, 'sortableList-1')">Item 1</li>`
-  htmlContent += `<li draggable="true" id="item2" ondragstart="drag(event, 'sortableList-1')">Item 2</li>`
-  htmlContent += `<li draggable="true" id="item3" ondragstart="drag(event, 'sortableList-1')">Item 3</li>`
-  htmlContent += `<li draggable="true" id="item4" ondragstart="drag(event, 'sortableList-1')">Item 4</li>`
-  htmlContent += `<li draggable="true" id="item5" ondragstart="drag(event, 'sortableList-1')">Item 5</li>`
+  htmlContent += `<li draggable="true" id="item1">Item 1</li>`
+  htmlContent += `<li draggable="true" id="item2">Item 2</li>`
+  htmlContent += `<li draggable="true" id="item3">Item 3</li>`
+  htmlContent += `<li draggable="true" id="item4">Item 4</li>`
+  htmlContent += `<li draggable="true" id="item5">Item 5</li>`
   htmlContent += `</ul>`
   htmlContent += `<p></p>`
   htmlContent += `<hr>`
   htmlContent += `<p></p>`
   htmlContent += `<ul id="sortableList-2">`
-  htmlContent += `<li draggable="true" id="item6" ondragstart="drag(event, 'sortableList-2')">Item 1</li>`
-  htmlContent += `<li draggable="true" id="item7" ondragstart="drag(event, 'sortableList-2')">Item 2</li>`
-  htmlContent += `<li draggable="true" id="item8" ondragstart="drag(event, 'sortableList-2')">Item 3</li>`
-  htmlContent += `<li draggable="true" id="item9" ondragstart="drag(event, 'sortableList-2')">Item 4</li>`
-  htmlContent += `<li draggable="true" id="item10" ondragstart="drag(event, 'sortableList-2')">Item 5</li>`
+  htmlContent += `<li draggable="true" id="item6">Item 1</li>`
+  htmlContent += `<li draggable="true" id="item7">Item 2</li>`
+  htmlContent += `<li draggable="true" id="item8">Item 3</li>`
+  htmlContent += `<li draggable="true" id="item9">Item 4</li>`
+  htmlContent += `<li draggable="true" id="item10">Item 5</li>`
   htmlContent += `</ul>`
   lists.innerHTML = htmlContent;
+
+  const listItems = document.querySelectorAll('li[draggable="true"]');
+  listItems.forEach(item => {
+    item.addEventListener('dragstart', function(event) {
+      drag(event, this.parentNode.id);
+    });
+  });
 }
 
 function drag(ev, listId) {
