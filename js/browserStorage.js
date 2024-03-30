@@ -88,11 +88,11 @@ function downloadJSON(key) {
     });
 }
 
-/*TODO */
 function uploadJSON(file){
     if (file) {
         const reader = new FileReader();
         reader.readAsText(file);
+        const key = file.name.replace(/\.[^/.]+$/, "");
         reader.onload = function() {
             const jsonData = JSON.parse(reader.result);
             setBrowserStorage(key,JSON.stringify(jsonData))
@@ -101,7 +101,7 @@ function uploadJSON(file){
             console.error("Error reading the file");
         };
     } else {
-        console.error("no file")
+        console.error("No file selected")
     }
 }
 

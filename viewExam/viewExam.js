@@ -71,11 +71,11 @@ window.onload =  function() {
                 
             });
             htmlContent += `<div class="side-panel">`;
-            htmlContent +=`<button id="save">save</button>`
-            htmlContent +=`<button id="hide">toggle Answers</button>`
-            htmlContent +=`<button id="download">download</button>`
-            htmlContent +=`<input type="file" id="fileInput" accept=".json">`
-            htmlContent +=`<button id="uploadButton">Upload JSON</button>`
+            htmlContent +=`<button id="save">save</button>`;
+            htmlContent +=`<button id="hide">toggle Answers</button>`;
+            htmlContent +=`<button id="download">download</button>`;
+            htmlContent +=`<input type="file" id="fileInput" accept=".json">`;
+            htmlContent +=`<button id="uploadButton">Upload JSON</button>`;
             htmlContent += `</div>`;
             examInfoDiv.innerHTML = htmlContent;
 
@@ -91,31 +91,42 @@ window.onload =  function() {
             const saveButton = document.getElementById("save");
             saveButton.addEventListener("click", function() {
                 saveAnswers(); 
+                location.reload();
             });
-            const hideBUtton = document.getElementById("hide");
-            hideBUtton.addEventListener("click", function() {
+            const hideButton = document.getElementById("hide");
+            hideButton.addEventListener("click", function() {
                 toggleAnswersVisibility();
             });
             const downloadButton = document.getElementById("download");
             downloadButton.addEventListener("click", function() {
                 downloadJSON("examFull");
             });  
-            /*TODO*/
-            const uploadButton = document.getElementById("download");
-            uploadButton.addEventListener("click", function() {
-                uploadButton
-            });                
-
-
+                  
         } catch (error) {
-            examInfoDiv.innerHTML = "<p>Error al analizar el contenido de examFull.json</p>";
+            
+            let htmlContent = "<p>Error al analizar el contenido de examFull.json</p>";
+            htmlContent +=`<input type="file" id="fileInput" accept=".json">`;
+            htmlContent +=`<button id="uploadButton">Upload JSON</button>`;
             console.error("Error parsing examFull JSON:", error);
+            examInfoDiv.innerHTML = htmlContent;
         }
     } else {
-        examInfoDiv.innerHTML = "<p>No se encontró el contenido de examFull.json en el almacenamiento de la extension..</p>";
+        let htmlContent = "<p>No se encontró el contenido de examFull.json en el almacenamiento de la extension.</p>";
+        htmlContent +=`<input type="file" id="fileInput" accept=".json">`;
+        htmlContent +=`<button id="uploadButton">Upload JSON</button>`;
+        examInfoDiv.innerHTML = htmlContent;
         console.error("No examFull JSON found in browser's storage.");
-        
     }
+        const uploadButton = document.getElementById("uploadButton");
+        uploadButton.addEventListener("click", function() {
+            const fileInput = document.getElementById("fileInput");
+            const file = fileInput.files[0];
+            uploadJSON(file); 
+            if(file){
+                location.reload();
+            }
+        });    
+
     });
 }
 
@@ -174,7 +185,6 @@ function saveAnswers() {
             console.error("No examFull JSON found in browser's storage.");
         }
     });
-    location.reload();
 }
 
 function toggleAnswersVisibility() {

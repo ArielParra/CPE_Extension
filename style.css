@@ -128,3 +128,30 @@ li:hover {
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 }
+
+/* Styling the file input */
+input[type="file"] {
+  background-color: var(--button_BG);
+  border: 2px solid var(--button_border); 
+  color: var(--button_color);
+  box-shadow: 4px 4px 2px 1px var(--gray1);
+  max-width: 56.45%;
+  margin: 5px;
+  padding: 15px;
+  margin-top: 0%;
+  border-radius: 35px;
+  transition: background-color 0.3s;
+}
+
+/* Hide the default file selector button */
+input[type="file"]::file-selector-button {
+  display: none;
+}
+
+/* Style the input when hovered */
+input[type="file"]:hover {
+  border: 2px solid var(--button-hover_border); 
+  background-color: var(--button-hover_BG);
+  color: var(--button-hover_color);
+  transition: 200ms;
+}
