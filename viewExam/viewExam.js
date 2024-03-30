@@ -32,6 +32,8 @@ window.onload =  function() {
             let htmlContent = `<h3>Examen ${examFull.number}</h3>`;
                 htmlContent += `<h1>${examFull.title}</h1>`;
             
+            htmlContent += `<div id="exam">`;
+
             examFull.questions.forEach((question, index) => {
                 htmlContent += `<h4>Pregunta ${index + 1}: ${question.title}</h4>`;
                 //htmlContent += `<p>tipo : ${question.type}</p>`;
@@ -70,10 +72,12 @@ window.onload =  function() {
                 }
                 
             });
+            htmlContent += `</div>`;//id="exam"
             htmlContent += `<div class="side-panel">`;
             htmlContent +=`<button id="save">save</button>`;
             htmlContent +=`<button id="hide">toggle Answers</button>`;
             htmlContent +=`<button id="download">download</button>`;
+            htmlContent += `<button id="copyToClipboard">Copy to Clipboard</button>`; // Added copy to clipboard button
             htmlContent +=`<input type="file" id="fileInput" accept=".json">`;
             htmlContent +=`<button id="uploadButton">Upload JSON</button>`;
             htmlContent += `</div>`;
@@ -101,6 +105,10 @@ window.onload =  function() {
             downloadButton.addEventListener("click", function() {
                 downloadJSON("examFull");
             });  
+            const copyToClipboardButton = document.getElementById("copyToClipboard");
+            copyToClipboardButton.addEventListener("click", function () {
+                copyToClipboard();
+            });
                   
         } catch (error) {
             
@@ -131,6 +139,23 @@ window.onload =  function() {
 
     });
 }
+
+function copyToClipboard() {
+    const examDiv = document.getElementById("exam");
+    const textToCopy = examDiv.innerText;
+
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            alert("Content copied to clipboard!");
+        })
+        .catch((error) => {
+            console.error("Unable to copy to clipboard: ", error);
+            alert("Failed to copy content to clipboard.");
+        });
+}
+
+
+
 
 function drag(ev, listId) {
     ev.dataTransfer.setData("text", ev.target.id);
