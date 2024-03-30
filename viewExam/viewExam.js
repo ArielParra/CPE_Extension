@@ -40,15 +40,13 @@ window.onload =  function() {
 
                     question.answers.forEach((answer, answerIndex) => {
                         if (answerIndex === 0) {
-                            htmlContent += `<p id="\answers-${index + 1}+"\">Answer = ${answer+1}`;
+                            htmlContent += `<p id="answers-${index + 1}">Answer = ${answer+1}`;
                         } else {
                             htmlContent += `, ${answer+ 1}`;
                         }
                     });
                     htmlContent += `</p>`;
                 }
-                
-            
 
                 if (question.type === "singleOption") {
                     const radioGroupName = `question_${index + 1}`;

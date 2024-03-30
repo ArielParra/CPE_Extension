@@ -34,9 +34,7 @@
       "js/getExamData.js",
       "js/setExamFull.js",
       "js/delLocalStorage.js",
-      "js/getBrowserStorage.js",
-      "js/setBrowserStorage.js",
-      "js/delBrowserStorage.js"
+      "js/browserStorage.js"
       ]
     }
   ]

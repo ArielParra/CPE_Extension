@@ -37,9 +37,6 @@ function handleMessages(message) {
             getExamData();
             setExamFull();
           break;
-        case "setBrowserStorage":
-          setBrowserStorage("examFull",localStorage.getItem("examFull"));
-          break;
         case "delCookie":
           delCookie("examNumber");
           break;
@@ -48,7 +45,6 @@ function handleMessages(message) {
           break;
         case "delLocalStorage":
           delLocalStorage("examData");
-          delLocalStorage("examFull");
           break;
         case "delBrowserStorage":
           delBrowserStorage();
