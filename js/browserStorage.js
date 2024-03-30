@@ -88,19 +88,6 @@ function downloadJSON(key) {
     });
 }
 
-
-function setBrowserStorage(key, value) {
-    if (typeof browser !== 'undefined') {
-        browser.storage.local.set({ [key]: value });
-        console.log("Key: "+key+" stored in firefox storage.");
-    } else if (typeof chrome !== 'undefined') {
-        chrome.storage.local.set({ [key]: value });
-        console.log("Key: "+key+" stored in Chrome storage.");
-    } else {
-        console.error("ERROR: Extension API not detected.");
-    }
-}
-
 /*TODO */
 function uploadJSON(file){
     if (file) {

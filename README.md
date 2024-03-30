@@ -32,7 +32,7 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [ ] Recargar el examen varias veces para recaudar todas las preguntas
 - [ ] Contestar el examen y comprobar la calificacion
 - [ ] capacidad de realizar diplomados completos al completar cada uno de sus cursos guardando cookies del curso para hacer
-- [ ] javastrip y optimizaciones
+- [ ] minify content.js y optimizaciones
 
 # credits
 
