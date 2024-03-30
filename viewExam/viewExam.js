@@ -34,10 +34,8 @@ window.onload = getBrowserStorage("examFull", (data) => {
 
                 question.answers.forEach((answer, answerIndex) => {
                     if (answerIndex === 0) {
-                        // Start the paragraph tag for the first answer
                         htmlContent += `<p id="answers-${index + 1}_answer-${answerIndex + 1}">Answer = ${answer+1}`;
                     } else {
-                        // For intermediate answers, append with comma
                         htmlContent += `, ${answer+ 1}`;
                     }
                 });
@@ -45,27 +43,24 @@ window.onload = getBrowserStorage("examFull", (data) => {
                 htmlContent += `</p>`
 
                 if (question.type === "singleOption") {
+                    const radioGroupName = `question_${index + 1}`;
                     question.options.forEach((option, optionIndex) => {
-                        htmlContent += `<input type="radio" value="${optionIndex + 1}">${optionIndex + 1}) ${option.content}<br>`;
+                        htmlContent += `<input type="radio" name="${radioGroupName}" value="${optionIndex + 1}">${optionIndex + 1}) ${option.content}<br>`;
                     });
                 }
+                
                 if (question.type === "multiOptions") {
                     question.options.forEach((option, optionIndex) => {
                         htmlContent += `<input type="checkbox" value="${optionIndex + 1 }">${optionIndex + 1}) ${option.content}<br>`;
                     });
                 }
                 if (question.type === "organizeOptions") {
-                    htmlContent += `<ol id="sortable_${index + 1}" class="sortable">`;
+                    htmlContent += `<ul id="sortableList-${index + 1}">`; 
                     question.options.forEach((option, optionIndex) => {
-                        htmlContent += `
-                        <li>    
-                            <button style="width: 10px; height: 10px; font-size: 10px;"onclick="  moveUp(${index}, ${optionIndex})" ${optionIndex === 0 ? 'disabled' : ''}>▲</button>
-                            <button style="width: 10px; height: 10px; font-size: 10px;"onclick="moveDown(${index}, ${optionIndex})" ${optionIndex === question.options.length - 1 ? 'disabled' : ''}>▼</button>     
-                        ${option.content}
-                        </li>`;
+                        htmlContent += `<li draggable="true" id="item${optionIndex + 1 + index + 1}" ondragstart="drag(event, 'sortableList-${index + 1}')">${option.content}</li>`;
                     });
-                    htmlContent += `</ol>`;
-                }
+                    htmlContent += `</ul>`;
+                }                
 
             });
             htmlContent +=`<button " onclick="saveAnswers"}>save</button>`
@@ -79,8 +74,8 @@ window.onload = getBrowserStorage("examFull", (data) => {
         examInfoDiv.innerHTML = "<p>No se encontró el contenido de examFull.json en el almacenamiento de la extension..</p>";
         console.error("No se encontró el contenido de examFull.json en el almacenamiento de la extension.");
     }
-
 });
 
-
-/* TODO: moveUp, moveDown, update, save functions */
+  
+/* TODO: implement MoveListItems.html code into organizeOptions list ,
+   TODO: implement saveAnswers function */

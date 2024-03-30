@@ -96,3 +96,17 @@ a[href]:hover{
 a:focus {
   outline: 2px solid var(--nord10); /* outline when tab is pressed */
 }
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  padding: 10px;
+  background-color: var(--blue);
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+li:hover {
+  background-color: var(--cyan);
+}

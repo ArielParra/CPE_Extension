@@ -28,6 +28,7 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [ ] logica por tipo de respuesta
 - [ ] modificar las respuestas del examen desde la extension
 - [ ] guardar examFull desde browser storage hacia la pc
+- [ ] importar examFUll con respuestas desde el pc hacia el browser storage
 - [ ] Conforme a las preguntas erroneas ir eligiendo las correctas 
 - [ ] Recargar el examen 5 veces para recaudar las 30 preguntas
 - [ ] Contestar el examen hasta sacar 10 y comprobar la calificacion
