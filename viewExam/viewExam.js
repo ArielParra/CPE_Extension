@@ -96,13 +96,6 @@ window.onload = function () {
 
                 /*prevents unsafe-inline, the events listeners most be attatched after the html is written*/
 
-                const uploadButton = document.getElementById("fileInput");
-                uploadButton.addEventListener("change", function () {
-                    if (this.files.length > 0) {
-                        this.previousElementSibling.querySelector('.custom-file-input-label').textContent = this.files[0].name;
-                    }
-                });
-
                 const listItems = document.querySelectorAll('li[draggable="true"]');
                 listItems.forEach(item => {
                     item.addEventListener('dragstart', function (event) {
@@ -171,6 +164,12 @@ window.onload = function () {
             examInfoDiv.innerHTML = htmlContent;
             console.error("No examFull JSON found in browser's storage.");
         }
+        const fileInput = document.getElementById("fileInput");
+        fileInput.addEventListener("change", function () {
+            if (this.files.length > 0) {
+                this.previousElementSibling.querySelector('.custom-file-input-label').textContent = this.files[0].name;
+            }
+        });
         const uploadButton = document.getElementById("uploadButton");
         uploadButton.addEventListener("click", function () {
             const fileInput = document.getElementById("fileInput");
