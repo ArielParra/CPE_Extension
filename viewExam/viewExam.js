@@ -10,132 +10,154 @@
 
 let answersHidden = false;
 
-window.onload =  function() {
+window.onload = function () {
     getBrowserStorage("examFull", (data) => {
-    /**
-     * HTML element containing the exam information.
-     * @type {HTMLElement}
-     */
-    const examInfoDiv = document.getElementById("examInfo");
+        /**
+         * HTML element containing the exam information.
+         * @type {HTMLElement}
+         */
+        const examInfoDiv = document.getElementById("examInfo");
 
-    if (data) {
-        try {   
-            /**
-             * Exam data in JSON format.
-             * @type {Object}
-             */
-            const examFull = JSON.parse(data);
-            /**
-             * HTML content representing the exam information.
-             * @type {String}
-             */
-            let htmlContent = `<h3>Examen ${examFull.number}</h3>`;
+        if (data) {
+            try {
+                /**
+                 * Exam data in JSON format.
+                 * @type {Object}
+                 */
+                const examFull = JSON.parse(data);
+                /**
+                 * HTML content representing the exam information.
+                 * @type {String}
+                 */
+                let htmlContent = `<h3>Examen ${examFull.number}</h3>`;
                 htmlContent += `<h1>${examFull.title}</h1>`;
-            
-            htmlContent += `<div id="exam">`;
 
-            examFull.questions.forEach((question, index) => {
-                htmlContent += `<h4>Pregunta ${index + 1}: ${question.title}</h4>`;
-                //htmlContent += `<p>tipo : ${question.type}</p>`;
+                htmlContent += `<div id="exam">`;
 
-                if (!answersHidden) { 
+                examFull.questions.forEach((question, index) => {
+                    htmlContent += `<h4>Pregunta ${index + 1}: ${question.title}</h4>`;
+                    //htmlContent += `<p>tipo : ${question.type}</p>`;
 
-                    question.answers.forEach((answer, answerIndex) => {
-                        if (answerIndex === 0) {
-                            htmlContent += `<p id="answers-${index + 1}">Answer = ${answer+1}`;
-                        } else {
-                            htmlContent += `, ${answer+ 1}`;
-                        }
-                    });
-                    htmlContent += `</p>`;
-                }
+                    if (!answersHidden) {
 
-                if (question.type === "singleOption") {
-                    const radioGroupName = `question_${index + 1}`;
-                    question.options.forEach((option, optionIndex) => {
-                        htmlContent += `<input type="radio" name="${radioGroupName}" value="${optionIndex + 1}">${optionIndex + 1}) ${option.content}<br>`;
-                    });
-                }
-                
-                if (question.type === "multiOptions") {
-                    question.options.forEach((option, optionIndex) => {
-                        htmlContent += `<input type="checkbox" value="${optionIndex + 1 }">${optionIndex + 1}) ${option.content}<br>`;
-                    });
-                }
-                if (question.type === "organizeOptions") {
-                    htmlContent += `<ul id="sortableList-${index + 1}">`; 
-                    question.options.forEach((option, optionIndex) => {
-                        const originalIndex = examFull.questions[index].answers.indexOf(optionIndex);
-                        htmlContent += `<li draggable="true" id="item${originalIndex +1  + index + 1}">${question.options[originalIndex].content}</li>`;
-                    });
-                    htmlContent += `</ul>`;
-                }
-                
-            });
-            htmlContent += `</div>`;//id="exam"
-            htmlContent += `<div class="side-panel">`;
-            htmlContent +=`<button id="save">save</button>`;
-            htmlContent +=`<button id="hide">toggle Answers</button>`;
-            htmlContent +=`<button id="download">download</button>`;
-            htmlContent += `<button id="copyToClipboard">Copy to Clipboard</button>`; // Added copy to clipboard button
-            htmlContent +=`<input type="file" id="fileInput" accept=".json">`;
-            htmlContent +=`<button id="uploadButton">Upload JSON</button>`;
-            htmlContent += `</div>`;
-            examInfoDiv.innerHTML = htmlContent;
+                        question.answers.forEach((answer, answerIndex) => {
+                            if (answerIndex === 0) {
+                                htmlContent += `<p id="answers-${index + 1}">Respuesta = ${answer + 1}`;
+                            } else {
+                                htmlContent += `, ${answer + 1}`;
+                            }
+                        });
+                        htmlContent += `</p>`;
+                    }
 
-            /*prevents unsafe-inline, the events listeners most be attatched after the html is written*/
+                    if (question.type === "singleOption") {
+                        const radioGroup = `question_${index + 1}`;
+                        question.options.forEach((option, optionIndex) => {
+                            htmlContent += `<input type="radio" name="${radioGroup}" value="${optionIndex + 1}">${optionIndex + 1}) ${option.content}<br>`;
+                        });
+                    }
 
-            const listItems = document.querySelectorAll('li[draggable="true"]');
-            listItems.forEach(item => {
-            item.addEventListener('dragstart', function(event) {
-                drag(event, this.parentNode.id);
+                    if (question.type === "multiOptions") {
+                        const checkboxGroup = `question_${index + 1}`;
+                        question.options.forEach((option, optionIndex) => {
+                            htmlContent += `<input type="checkbox" name="${checkboxGroup}"value="${optionIndex + 1}">${optionIndex + 1}) ${option.content}<br>`;
+                        });
+                    }
+                    if (question.type === "organizeOptions") {
+                        htmlContent += `<ul id="sortableList-${index + 1}">`;
+                        question.answers.forEach((answer) => {
+                            htmlContent += `<li draggable="true" id="item${answer + 1 + index + 1}">${question.options[answer].content}</li>`;
+                        });
+                        htmlContent += `</ul>`;
+                    }
+
                 });
-            });
+                htmlContent += `</div>`;//id="exam"
+                htmlContent += `<div class="side-panel">`;
+                htmlContent += `<button id="save">save</button>`;
+                htmlContent += `<button id="hide">toggle Answers</button>`;
+                htmlContent += `<button id="download">download</button>`;
+                htmlContent += `<button id="copyToClipboard">Copy to Clipboard</button>`; // Added copy to clipboard button
+                htmlContent += `<input type="file" id="fileInput" accept=".json">`;
+                htmlContent += `<button id="uploadButton">Upload JSON</button>`;
+                htmlContent += `</div>`;
+                examInfoDiv.innerHTML = htmlContent;
 
-            const saveButton = document.getElementById("save");
-            saveButton.addEventListener("click", function() {
-                saveAnswers(); 
-                location.reload();
-            });
-            const hideButton = document.getElementById("hide");
-            hideButton.addEventListener("click", function() {
-                toggleAnswersVisibility();
-            });
-            const downloadButton = document.getElementById("download");
-            downloadButton.addEventListener("click", function() {
-                downloadJSON("examFull");
-            });  
-            const copyToClipboardButton = document.getElementById("copyToClipboard");
-            copyToClipboardButton.addEventListener("click", function () {
-                copyToClipboard();
-            });
-                  
-        } catch (error) {
-            
-            let htmlContent = "<p>Error al analizar el contenido de examFull.json</p>";
-            htmlContent +=`<input type="file" id="fileInput" accept=".json">`;
-            htmlContent +=`<button id="uploadButton">Upload JSON</button>`;
-            console.error("Error parsing examFull JSON:", error);
+                /*prevents unsafe-inline, the events listeners most be attatched after the html is written*/
+
+                const listItems = document.querySelectorAll('li[draggable="true"]');
+                listItems.forEach(item => {
+                    item.addEventListener('dragstart', function (event) {
+                        drag(event, this.parentNode.id);
+                    });
+                });
+
+                const saveButton = document.getElementById("save");
+                saveButton.addEventListener("click", function () {
+                    saveAnswers();
+                    location.reload();
+                });
+                const hideButton = document.getElementById("hide");
+                hideButton.addEventListener("click", function () {
+                    toggleAnswersVisibility();
+                });
+                const downloadButton = document.getElementById("download");
+                downloadButton.addEventListener("click", function () {
+                    downloadJSON("examFull");
+                });
+                const copyToClipboardButton = document.getElementById("copyToClipboard");
+                copyToClipboardButton.addEventListener("click", function () {
+                    copyToClipboard();
+                });
+
+                const listsContainer = document.getElementById('examInfo');
+
+
+                listsContainer.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                });
+
+                listsContainer.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    const data = e.dataTransfer.getData("text");
+                    const listId = e.dataTransfer.getData("listId");
+                    const draggedItem = document.getElementById(data);
+                    const target = e.target.closest('li');
+
+                    if (target && target !== draggedItem && listId === target.parentNode.id) {
+                        const parent = target.parentNode;
+                        const nextSibling = target.nextSibling === draggedItem ? target : target.nextSibling;
+
+                        parent.insertBefore(draggedItem, nextSibling);
+                    }
+                });
+
+            } catch (error) {
+
+                let htmlContent = "<p>Error al analizar el contenido de examFull.json</p>";
+                htmlContent += `<input type="file" id="fileInput" accept=".json">`;
+                htmlContent += `<button id="uploadButton">Upload JSON</button>`;
+                console.error("Error parsing examFull JSON:", error);
+                examInfoDiv.innerHTML = htmlContent;
+            }
+        } else {
+            let htmlContent = "<p>No se encontró el contenido de examFull.json en el almacenamiento de la extension.</p>";
+            htmlContent += `<input type="file" id="fileInput" accept=".json">`;
+            htmlContent += `<button id="uploadButton">Upload JSON</button>`;
             examInfoDiv.innerHTML = htmlContent;
+            console.error("No examFull JSON found in browser's storage.");
         }
-    } else {
-        let htmlContent = "<p>No se encontró el contenido de examFull.json en el almacenamiento de la extension.</p>";
-        htmlContent +=`<input type="file" id="fileInput" accept=".json">`;
-        htmlContent +=`<button id="uploadButton">Upload JSON</button>`;
-        examInfoDiv.innerHTML = htmlContent;
-        console.error("No examFull JSON found in browser's storage.");
-    }
         const uploadButton = document.getElementById("uploadButton");
-        uploadButton.addEventListener("click", function() {
+        uploadButton.addEventListener("click", function () {
             const fileInput = document.getElementById("fileInput");
             const file = fileInput.files[0];
-            uploadJSON(file); 
-            if(file){
+            uploadJSON(file);
+            if (file) {
                 location.reload();
             } else {
                 alert("Sin archivo seleccionado");
             }
-        });    
+        });
 
     });
 }
@@ -152,14 +174,6 @@ function copyToClipboard() {
             console.error("Unable to copy to clipboard: ", error);
             alert("Failed to copy content to clipboard.");
         });
-}
-
-
-
-
-function drag(ev, listId) {
-    ev.dataTransfer.setData("text", ev.target.id);
-    ev.dataTransfer.setData("listId", listId);
 }
 
 function saveAnswers() {
@@ -190,10 +204,10 @@ function saveAnswers() {
                         });
                     }
                     if (question.type === "organizeOptions") {
-                        // Retrieve the order of list items
                         const listItems = document.querySelectorAll(`#sortableList-${index + 1} li`);
                         listItems.forEach((item) => {
                             const optionIndex = parseInt(item.id.replace('item', '')) - (index + 2);
+                            console.log("optionIndex: "+ optionIndex);
                             selectedOptions.push(optionIndex);
                         });
                     }
@@ -204,6 +218,7 @@ function saveAnswers() {
                 });
 
                 // Store the updated examFull object back in browser's storage
+                console.log("Updated examFull object:", examFull);
                 setBrowserStorage("examFull", JSON.stringify(examFull));
             } catch (error) {
                 console.error("Error parsing examFull JSON:", error);
@@ -215,36 +230,17 @@ function saveAnswers() {
 }
 
 function toggleAnswersVisibility() {
-    answersHidden = !answersHidden; 
+    answersHidden = !answersHidden;
     const answers = document.querySelectorAll("p[id^='answers-']");
     answers.forEach(answer => {
         answer.classList.toggle("hidden");
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
 
-    const listsContainer = document.getElementById('examInfo');
-    
 
-    listsContainer.addEventListener('dragover', function (e) {
-        e.preventDefault();
-    });
-
-    listsContainer.addEventListener('drop', function (e) {
-        e.preventDefault();
-        const data = e.dataTransfer.getData("text");
-        console.log(data);
-        const listId = e.dataTransfer.getData("listId");
-        const draggedItem = document.getElementById(data);
-        const target = e.target.closest('li');
-
-        if (target && target !== draggedItem && listId === target.parentNode.id) {
-            const parent = target.parentNode;
-            const nextSibling = target.nextSibling === draggedItem ? target : target.nextSibling;
-
-            parent.insertBefore(draggedItem, nextSibling);
-        }
-    });
-});
+function drag(ev, listId) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("listId", listId);
+}
 
