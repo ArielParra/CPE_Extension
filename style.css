@@ -54,6 +54,9 @@ body{
   animation: fadeInFromBottom 500ms ease forwards;
   min-width: 400px; 
   min-height: 400px; 
+  position: relative;
+  position: relative;
+  height: 100%; 
 }
 
 @keyframes fadeInFromBottom { /* load in animation */
@@ -73,12 +76,12 @@ button{
   border-radius: 35px;
   transition: background-color 0.3s;
 }
-button:active{
+.custom-file-input:active,button:active{
   transform: scale(1.2);
   transition: 100ms;
 }
 
-button:hover{
+.custom-file-input:hover, button:hover{
   border: 2px solid var(--button-hover_border); 
   background-color: var(--button-hover_BG);
   color:            var(--button-hover_color);
@@ -118,40 +121,40 @@ li:hover {
 .hidden {
   display: none;
 }
-.side-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0; 
-  width: 200px; 
-  background-color: var(--cyan);
-  padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-}
 
-/* Styling the file input */
-input[type="file"] {
+.custom-file-input {
+  font-size: 12px;
   background-color: var(--button_BG);
   border: 2px solid var(--button_border); 
   color: var(--button_color);
   box-shadow: 4px 4px 2px 1px var(--gray1);
-  max-width: 56.45%;
+  max-width: 57.45%;
   margin: 5px;
   padding: 15px;
   margin-top: 0%;
-  border-radius: 35px;
+  border-radius: 10px;
+  cursor: pointer; 
+  display: inline-block; 
   transition: background-color 0.3s;
 }
 
-/* Hide the default file selector button */
-input[type="file"]::file-selector-button {
-  display: none;
+
+
+#examInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-/* Style the input when hovered */
-input[type="file"]:hover {
-  border: 2px solid var(--button-hover_border); 
-  background-color: var(--button-hover_BG);
-  color: var(--button-hover_color);
-  transition: 200ms;
+.side-panel {
+  padding: 15px;
+  position: sticky;
+  top: 20%;
+  height:fit-content; 
+  width: 10%; 
+  background-color: var(--cyan);
+}
+.side-panel button {
+  display: block;
+  margin-bottom: 15px;
 }

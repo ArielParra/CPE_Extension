@@ -29,10 +29,10 @@ aunque dicho sitio web no incluye el archivo robots.txt, por lo que el uso de ex
 - [x] modificar las respuestas del examen desde la extension
 - [x] guardar examFull desde browser storage hacia la pc
 - [x] importar examFull con respuestas desde el pc hacia el browser storage
-- [ ] copiar al portapapeles
+- [x] copiar al portapapeles
+- [x] sticky side bar
+- [ ] variable para ver respuestas 
 - [ ] getExamData y comparar con examFull y tener las respuestas este 
-- [ ] variable respuestas 
-- [ ] sticky side bar
 - [ ] ver el examNumber cookie en el popup
 - [ ] Recargar el examen varias veces para recaudar todas las preguntas
 - [ ] Contestar el examen y comprobar la calificacion
