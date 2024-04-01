@@ -4,6 +4,9 @@
  * @function setExamCookie
  */
 function setExamCookie(){
+  if (window.location.pathname.includes("/cursos/view/")){
+
+  if (getPath().includes("/cursos/view/")){
     const appEstructuraCurso = document.querySelector("app-estructura-curso");
     if (appEstructuraCurso) {
         const buttons = appEstructuraCurso.querySelectorAll('button.mat-focus-indicator.mat-button.mat-button-base');
@@ -18,9 +21,12 @@ function setExamCookie(){
         if (examNumber >= 1 && examNumber <= count) {
             setCookie("examNumber", examNumber, 1);
         } else {
-            alert("Error: introduce un numero del 1 al " + count + ".");
+            alert("ERROR: introduce un numero del 1 al " + count + ".");
         }
     } else {
         console.error('ERROR: no exam found on this page');
+    }
+    } else {
+        console.error("ERROR: Not inside course ");
     }
 }

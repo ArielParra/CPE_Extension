@@ -146,6 +146,7 @@ window.onload = function () {
             } catch (error) {
 
                 let htmlContent = "<p>Error al analizar el contenido de examFull.json</p>";
+                htmlContent += `<p></p>`;
                 htmlContent += `<label for="fileInput" class="custom-file-input">`;
                 htmlContent += `<span class="custom-file-input-label">Seleccionar Archivo</span>`;
                 htmlContent += `</label>`;
@@ -156,6 +157,7 @@ window.onload = function () {
             }
         } else {
             let htmlContent = "<p>No se encontró el contenido de examFull.json en el almacenamiento de la extension.</p>";
+            htmlContent += `<p></p>`;
             htmlContent += `<label for="fileInput" class="custom-file-input">`;
             htmlContent += `<span class="custom-file-input-label">Seleccionar Archivo</span>`;
             htmlContent += `</label>`;
@@ -242,7 +244,6 @@ function saveAnswers() {
                 });
 
                 // Store the updated examFull object back in browser's storage
-                console.log("Updated examFull object:", examFull);
                 setBrowserStorage("examFull", JSON.stringify(examFull));
             } catch (error) {
                 console.error("Error parsing examFull JSON:", error);

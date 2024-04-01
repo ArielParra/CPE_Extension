@@ -14,15 +14,17 @@ function getExamData() {
    * @property {Array} questions - An array of question objects.
    */
   const examData = {
+    path: "",
     number: "",
     title: "",
     questions: [],
   };//type for the JSON
 
+  if (window.location.pathname.includes("/cursos/view/")){
   const appCrearExamen = document.querySelector("app-crear-examen");
-
   if (appCrearExamen){
     const titleDiv = appCrearExamen.querySelector("div.title-exam.ng-star-inserted");
+    examData.path = window.location.pathname;
 
     if (titleDiv) {
       examData.number = titleDiv.querySelector('p').textContent.match(/\d+/)[0];
@@ -113,10 +115,14 @@ function getExamData() {
         localStorage.setItem("examData", JSON.stringify(examData));
         console.log("examData.json saved in localStorage");
       } else {
-        console.log("Error: No questions found on this page");
+        console.error("ERROR: No questions found on this page");
       }
   }else{
-    console.log("Error: No exam found on this page");
+    console.error("ERROR: No exam found on this page");
   } // appCrearExamen exist
+  }else{
+    console.error("ERROR: Not inside course ");
+  }
+}
 
-} 
+    

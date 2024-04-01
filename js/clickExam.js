@@ -34,5 +34,6 @@ function clickExam() {
         }
     } else {
         console.log('No exam found on this page.');
+        alert("no se encontro el examen en esta pagina");
     }
 }

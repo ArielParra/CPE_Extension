@@ -50,6 +50,6 @@ function setExamFull() {
           }
       });
   } else {
-      console.log("Error: examData.json not found in localStorage");
+      console.error("Error: examData.json not found in localStorage");
   }
 }
